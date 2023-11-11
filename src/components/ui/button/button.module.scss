@@ -1,0 +1,31 @@
+.button {
+  all: unset;
+
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 28px;
+}
+
+.primary {
+  background-color: crimson;
+}
+
+.secondary {
+  background-color: darkolivegreen;
+}
+
+.tertiary {
+  background-color: #2f68cc;
+}
+
+.link {
+  background-color: #ffd073;
+}
+
+.fullWidth {
+  width: 100%;
+}
