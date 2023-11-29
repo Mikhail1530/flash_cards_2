@@ -52,14 +52,22 @@
   }
 }
 
+.label {
+  color: var(--color-dark-100);
+}
+
 .search {
   text-indent: 30px;
+
+  //appearance: none;
+  //
+  //&::-ms-clear {
+  //  display: none;
+  //}
 }
 
 .searchIcon {
   all: unset;
-
-  cursor: pointer;
 
   position: absolute;
   top: 55%;

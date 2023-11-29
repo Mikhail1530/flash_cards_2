@@ -30,6 +30,13 @@ export const Password: Story = {
     type: 'password',
   },
 }
+export const Search: Story = {
+  args: {
+    label: 'Search',
+    placeholder: 'Input',
+    type: 'search',
+  },
+}
 export const Error: Story = {
   args: {
     error: 'Error!',

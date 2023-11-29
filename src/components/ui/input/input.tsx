@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, forwardRef, useState } from 'react'
 
 import IconClose from '@/assets/icons/iconClose'
 import IconSearch from '@/assets/icons/iconSearch'
@@ -9,35 +9,47 @@ import cx from 'clsx'
 import s from './input.module.scss'
 
 type InputProps = {
-  clearInput?: () => void
   error?: string
   label?: string
-  showPass?: () => void
 } & ComponentPropsWithoutRef<'input'>
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ children, clearInput, error, label, placeholder, showPass, type = 'text', ...rest }, ref) => {
-    const showClearButton = type === 'search' && rest?.value?.toString().length! > 0
+  ({ children, error, label, type = 'text', ...rest }, ref) => {
+    const [show, setShow] = useState(false)
+    const [value, setValue] = useState('')
+
+    const showPass = () => setShow(!show)
+    const showClearButton = type === 'search' && value.length > 0
     const showError = !!error && error.length > 0
     const classInput = cx(s[type], s.input, showError && s.error)
 
+    const clearButton = (
+      <button className={s.buttonIcon} onClick={() => setValue('')} type={'button'}>
+        <IconClose />
+      </button>
+    )
+    const eyeButton = type === 'password' && (
+      <button className={s.buttonIcon} onMouseDown={showPass} onMouseUp={showPass} type={'button'}>
+        <IconEye />
+      </button>
+    )
+
     return (
       <div className={s.box}>
-        <Typography as={'label'} style={{ color: 'gray' }} variant={'body1'}>
+        <Typography as={'label'} className={s.label} variant={'body1'}>
           {type === 'search' ? '' : label}
         </Typography>
         <div className={s.inputBox}>
           {type === 'search' && <IconSearch className={s.searchIcon} />}
-          <input className={classInput} type={type} {...rest} placeholder={placeholder} ref={ref} />
-          {showClearButton && (
-            <button className={s.buttonIcon} onClick={clearInput} type={'button'}>
-              <IconClose />
-            </button>
-          )}
-          {type === 'password' && (
-            <button className={s.buttonIcon} onClick={showPass} type={'button'}>
-              <IconEye />
-            </button>
-          )}
+          <input
+            className={classInput}
+            type={(show && 'text') || type}
+            {...rest}
+            onChange={e => setValue(e.currentTarget.value)}
+            ref={ref}
+            value={value}
+          />
+          {showClearButton && clearButton}
+          {eyeButton}
         </div>
         {showError && (
           <Typography as={'label'} className={s.error} variant={'caption'}>
