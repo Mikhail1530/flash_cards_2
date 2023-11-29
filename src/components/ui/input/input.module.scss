@@ -59,11 +59,9 @@
 .search {
   text-indent: 30px;
 
-  //appearance: none;
-  //
-  //&::-ms-clear {
-  //  display: none;
-  //}
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
 }
 
 .searchIcon {
