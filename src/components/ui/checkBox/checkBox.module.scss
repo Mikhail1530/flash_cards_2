@@ -1,3 +1,58 @@
-.checkBox {
-  padding: 2px;
+.box {
+  display: inline-flex;
+  width: 100%;
+  margin: 15px;
+}
+
+.checkBoxWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  background-color: transparent;
+  border-radius: 50%;
+
+  transition: all 0.3s ease 0s;
+
+  &:hover {
+    background-color: var(--color-dark-500);
+    box-shadow: 0 0 1px 15px var(--color-dark-500);
+  }
+
+  &:focus,
+  &:active {
+    background-color: var(--color-dark-100);
+    box-shadow: 0 0 1px 15px var(--color-dark-100);
+  }
+}
+
+.checkboxRoot {
+  all: unset;
+
+  cursor: pointer;
+
+  position: absolute;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: 2.5px;
+  outline: 3px solid var(--color-light-900);
+}
+
+.iconCheckBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  border-radius: 2.5px;
+  outline: 3px solid var(--color-light-100);
+}
+
+.label {
+  padding: 0 10px 0 15px;
+  color: currentcolor;
 }

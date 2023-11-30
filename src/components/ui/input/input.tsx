@@ -1,29 +1,29 @@
 import { ComponentPropsWithoutRef, forwardRef, useState } from 'react'
 
 import IconClose from '@/assets/icons/iconClose'
+import { IconEye } from '@/assets/icons/iconEye'
 import IconSearch from '@/assets/icons/iconSearch'
-import { IconEye } from '@/components/ui/input/icons/iconEye'
 import { Typography } from '@/components/ui/typography'
 import cx from 'clsx'
 
 import s from './input.module.scss'
 
 type InputProps = {
+  clearInput?: () => void
   error?: string
   label?: string
 } & ComponentPropsWithoutRef<'input'>
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ children, error, label, type = 'text', ...rest }, ref) => {
+  ({ className, clearInput, error, label, type = 'text', ...rest }, ref) => {
     const [show, setShow] = useState(false)
-    const [value, setValue] = useState('')
 
     const showPass = () => setShow(!show)
-    const showClearButton = type === 'search' && value.length > 0
+    const showClearButton = type === 'search' && rest?.value?.toString().length! > 0
     const showError = !!error && error.length > 0
-    const classInput = cx(s[type], s.input, showError && s.error)
+    const classInput = cx(s[type], s.input, showError && s.error, className)
 
     const clearButton = (
-      <button className={s.buttonIcon} onClick={() => setValue('')} type={'button'}>
+      <button className={s.buttonIcon} onClick={clearInput} type={'button'}>
         <IconClose />
       </button>
     )
@@ -40,14 +40,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         </Typography>
         <div className={s.inputBox}>
           {type === 'search' && <IconSearch className={s.searchIcon} />}
-          <input
-            className={classInput}
-            type={(show && 'text') || type}
-            {...rest}
-            onChange={e => setValue(e.currentTarget.value)}
-            ref={ref}
-            value={value}
-          />
+          <input className={classInput} type={(show && 'text') || type} {...rest} ref={ref} />
           {showClearButton && clearButton}
           {eyeButton}
         </div>
