@@ -3,6 +3,7 @@ import { ComponentPropsWithoutRef, FC } from 'react'
 import { CheckBoxIcon } from '@/assets/icons/checkBoxIcon'
 import { Typography } from '@/components/ui/typography'
 import * as Checkbox from '@radix-ui/react-checkbox'
+import cx from 'clsx'
 
 import s from './checkBox.module.scss'
 type CheckBoxProps = {
@@ -12,8 +13,8 @@ export const CheckBox: FC<CheckBoxProps> = ({ className, label, ...rest }) => {
   return (
     <form className={s.box}>
       <div className={s.checkBoxWrapper}>
-        <Checkbox.Root className={s.checkboxRoot} {...rest}>
-          <Checkbox.Indicator asChild>
+        <Checkbox.Root className={cx(s.checkboxRoot, className)} {...rest}>
+          <Checkbox.Indicator>
             <CheckBoxIcon className={s.iconCheckBox} />
           </Checkbox.Indicator>
         </Checkbox.Root>

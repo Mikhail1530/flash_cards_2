@@ -27,3 +27,8 @@ export const Unchecked: Story = {
     checked: false,
   },
 }
+export const CheckBoxDefault: Story = {
+  render: (args: any) => {
+    return <CheckBox {...args} label={'CheckBox'} />
+  },
+}
