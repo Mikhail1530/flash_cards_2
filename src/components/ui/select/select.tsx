@@ -32,7 +32,7 @@ export const Select: FC<SelectProps> = ({ menu, onChangeOption, placeholder, tit
           </SelectRadix.Icon>
         </SelectRadix.Trigger>
         <SelectRadix.Portal>
-          <SelectRadix.Content className={s.selectContent} collisionPadding={0} position={'popper'}>
+          <SelectRadix.Content className={s.selectContent} position={'popper'}>
             <SelectRadix.Viewport className={s.selectViewport}>
               <SelectRadix.Group>{mappedOptions}</SelectRadix.Group>
             </SelectRadix.Viewport>
