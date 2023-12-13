@@ -5,6 +5,8 @@
 }
 
 .trigger {
+  cursor: pointer;
+
   display: flex;
   justify-content: space-between;
 
@@ -67,7 +69,7 @@
 }
 
 .selectItem {
-  //all: unset;
+  all: inherit;
 
   padding: 6px 12px;
 
@@ -79,7 +81,7 @@
 
   &:hover,
   &:focus {
-    color: var(--color-accent-300);
-    background: var(--color-accent-900);
+    color: var(--color-primary-300);
+    background: var(--color-primary-900);
   }
 }
