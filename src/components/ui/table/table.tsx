@@ -9,8 +9,8 @@ export const Table = forwardRef<ElementRef<'table'>, ComponentPropsWithoutRef<'t
   }
 )
 export const TableHead = forwardRef<ElementRef<'thead'>, ComponentPropsWithoutRef<'thead'>>(
-  ({ className, ...rest }, ref) => {
-    return <thead className={cx(className, s.tableHead)} {...rest} ref={ref} />
+  ({ ...rest }, ref) => {
+    return <thead {...rest} ref={ref} />
   }
 )
 export const TableBody = forwardRef<ElementRef<'tbody'>, ComponentPropsWithoutRef<'tbody'>>(
@@ -25,8 +25,8 @@ export const TableRow = forwardRef<ElementRef<'tr'>, ComponentPropsWithoutRef<'t
   }
 )
 export const TableHeadCell = forwardRef<ElementRef<'th'>, ComponentPropsWithoutRef<'th'>>(
-  ({ ...rest }, ref) => {
-    return <th {...rest} ref={ref} />
+  ({ className, ...rest }, ref) => {
+    return <th className={cx(className, s.tableHeadCell)} {...rest} ref={ref} />
   }
 )
 export const TableCell = forwardRef<ElementRef<'td'>, ComponentPropsWithoutRef<'td'>>(
