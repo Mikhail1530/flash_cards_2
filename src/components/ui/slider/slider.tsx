@@ -5,26 +5,21 @@ import * as SliderRadix from '@radix-ui/react-slider'
 import s from './slider.module.scss'
 
 type SliderProps = {
-  max?: number
-  min?: number
-  onChange: (value: number[]) => void
+  setSliderValue: (newValues: number[]) => void
   sliderValue?: number[]
 } & ComponentPropsWithoutRef<typeof SliderRadix.Root>
-export const Slider: FC<SliderProps> = ({ max, min, onChange, sliderValue, value, ...rest }) => {
-  const onHandlerChange = () => {
-    if (value) {
-      onChange(value)
-    }
+export const Slider: FC<SliderProps> = ({ setSliderValue, sliderValue, value, ...rest }) => {
+  const onHandlerChange = (newValues: number[]) => {
+    setSliderValue(newValues)
   }
 
   return (
     <form>
       <div className={s.boxSlider}>
-        <div className={s.boxNumber}>{min}</div>
+        <div className={s.boxNumber}>{sliderValue?.[0]}</div>
         <SliderRadix.Root
           className={s.sliderRoot}
-          max={max}
-          min={min}
+          minStepsBetweenThumbs={10}
           onValueChange={onHandlerChange}
           step={1}
           value={sliderValue}
@@ -36,7 +31,7 @@ export const Slider: FC<SliderProps> = ({ max, min, onChange, sliderValue, value
           <SliderRadix.Thumb aria-label={'Volume'} className={s.sliderThumb} />
           <SliderRadix.Thumb aria-label={'Volume'} className={s.sliderThumb} />
         </SliderRadix.Root>
-        <div className={s.boxNumber}>{max}</div>
+        <div className={s.boxNumber}>{sliderValue?.[1]}</div>
       </div>
     </form>
   )
