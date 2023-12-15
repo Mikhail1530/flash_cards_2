@@ -1,5 +1,5 @@
 import { SVGProps, memo } from 'react'
-export const CheckBoxIcon = (props: SVGProps<SVGSVGElement>) => (
+const CheckBoxIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg fill={'none'} height={24} width={24} xmlns={'http://www.w3.org/2000/svg'} {...props}>
     <path d={'M4 6h16v12H4z'} fill={'#000'} />
     <path

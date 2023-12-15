@@ -1,8 +1,6 @@
 import { ComponentPropsWithoutRef, forwardRef, useState } from 'react'
 
-import IconClose from '@/assets/icons/iconClose'
-import { IconEye } from '@/assets/icons/iconEye'
-import IconSearch from '@/assets/icons/iconSearch'
+import { IconClose, IconEye, IconSearch } from '@/assets'
 import { Typography } from '@/components/ui/typography'
 import cx from 'clsx'
 
