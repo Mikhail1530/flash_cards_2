@@ -1,12 +1,28 @@
-import HeaderIcon from '@/assets/icons/headerIcon'
-import { Button } from '@/components/ui/button'
-
+import { ComponentPropsWithoutRef, ReactNode } from 'react'
 import s from './header.module.scss'
-export const Header = () => {
+
+
+
+export type HeaderProps = {
+  variant?: 'light' | 'average' | 'dark'
+  buttonsVariant?: 'primary' | 'secondary' | 'tertiary'
+  logoImg: ReactNode
+  logoLink:string
+  className?: string
+} & ComponentPropsWithoutRef<'div'>
+
+
+
+export const Header = (props:HeaderProps) => {
+  const { logoImg, logoLink, className,children, ...rest } = props
+
+
   return (
     <div className={s.header}>
-      <HeaderIcon className={s.headerIcon} />
-      <Button className={s.headerButton}>Sign In</Button>
+      <a href={logoLink} className={`${s.headerIcon}  ${className}`}>{logoImg}</a>
+      {children && <div className={s.body}>{children}</div>}
     </div>
   )
 }
+
+export default Header

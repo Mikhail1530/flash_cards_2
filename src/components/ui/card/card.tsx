@@ -1,5 +1,5 @@
-import {ComponentPropsWithoutRef, ReactNode} from "react";
-import s from '../../../../cards/src/components/ui/card/card.module.scss'
+import {ComponentPropsWithoutRef, ReactNode} from "react"
+import s from './card.module.scss'
 
 export type titleType = {
   text?: string
@@ -11,7 +11,7 @@ export type CardProps = {
   title?: titleType
   width?: string
   className?: string
-} & ComponentPropsWithoutRef<"div">
+} & ComponentPropsWithoutRef<'div'>
 
 export const Card = (props: CardProps) => {
   const {className, variant = 'dark', ...rest} = props
