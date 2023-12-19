@@ -1,10 +1,12 @@
+import HeaderIcon from '@/assets/icons/headerIcon'
+// eslint-disable-next-line import/extensions
 import MenuIcon from '@/assets/icons/menuIcon.tsx'
 import { Button } from '@/components/ui/button'
 import CustomDropdownMenu, { MenuItem, MenuSeparator, SubMenu } from "@/components/ui/customDropdownMenu/customDropdownMenu.tsx";
 import Header from '@/components/ui/header/header'
-import s from '@/components/ui/header/header.module.scss'
 import { TabSwitcher } from '@/components/ui/tabSwitcher'
-import HeaderIcon from '@/assets/icons/headerIcon'
+
+import s from '@/components/ui/header/header.module.scss'
 
 export function App() {
   const isLogedIn=true
@@ -14,7 +16,13 @@ export function App() {
   return (
     <div>
       <Header logoImg={<HeaderIcon />} logoLink={'#'}>
-        <CustomDropdownMenu triggerContent={ <Button className={s.btnMenu}><MenuIcon /></Button>}>
+        <CustomDropdownMenu
+          triggerContent={
+            <Button className={s.btnMenu}>
+              <MenuIcon />
+            </Button>
+          }
+        >
           <MenuItem shortcut={'⌘ E'}>Edit</MenuItem>
           <MenuItem shortcut={'⌘ D'}>Duplicate</MenuItem>
           <MenuSeparator />

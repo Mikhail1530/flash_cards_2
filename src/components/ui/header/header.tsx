@@ -4,22 +4,22 @@ import s from './header.module.scss'
 
 
 export type HeaderProps = {
-  variant?: 'light' | 'average' | 'dark'
   buttonsVariant?: 'primary' | 'secondary' | 'tertiary'
-  logoImg: ReactNode
-  logoLink:string
   className?: string
+  logoImg: ReactNode
+  logoLink: string
+  variant?: 'average' | 'dark' | 'light'
 } & ComponentPropsWithoutRef<'div'>
 
 
 
 export const Header = (props:HeaderProps) => {
-  const { logoImg, logoLink, className,children, ...rest } = props
+  const { children, className, logoImg,logoLink, ...rest } = props
 
 
   return (
     <div className={s.header}>
-      <a href={logoLink} className={`${s.headerIcon}  ${className}`}>{logoImg}</a>
+      <a className={`${s.headerIcon}  ${className}`} href={logoLink}>{logoImg}</a>
       {children && <div className={s.body}>{children}</div>}
     </div>
   )

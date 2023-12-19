@@ -1,18 +1,18 @@
 import React, { useState, ReactNode } from "react";
-import s from "./customDropdownMenu.module.scss";
 
+import s from './customDropdownMenu.module.scss'
 
 interface CustomDropdownMenuProps {
-  triggerContent: ReactNode;
-  children: ReactNode;
+  children: ReactNode
+  triggerContent: ReactNode
 }
 
 const CustomDropdownMenu: React.FC<CustomDropdownMenuProps> = ({ triggerContent, children
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
+    setIsOpen(!isOpen)
+  }
 
   return (
     <div className={s.dropdownMenu}>
