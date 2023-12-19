@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import UnSelectRadioButtonSvg from '@/components/ui/radio-button/UnSelectRadioButtonSvg'
+import UnSelectRadioButtonSvg from '@/components/ui/radio-buttons/UnSelectRadioButtonSvg'
 import * as RadioGroup from '@radix-ui/react-radio-group'
 
 import s from './radio-button.module.scss'
