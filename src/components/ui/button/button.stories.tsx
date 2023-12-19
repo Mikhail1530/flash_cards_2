@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { SvgComponent } from '@/components/ui/button/iconButton'
+
 import { Button } from './'
 
 const meta = {
@@ -19,7 +21,12 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    children: 'Primary Button',
+    children: (
+      <>
+        <SvgComponent />
+        Primary Button
+      </>
+    ),
     disabled: false,
     variant: 'primary',
   },
