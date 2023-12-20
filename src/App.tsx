@@ -1,9 +1,13 @@
-import { Button } from '@/components/ui/button'
+import { SignIn } from '@/features/auth/signIn'
 
 export function App() {
   return (
-    <div>
-      <Button variant={'primary'}>Link Button</Button>
-    </div>
+    <SignIn />
+
+    // <Provider store={store}>
+    //   <Router />
+    //   <Button>kuku</Button>
+    //   <Decks />
+    // </Provider>
   )
 }
