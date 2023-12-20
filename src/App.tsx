@@ -1,13 +1,11 @@
-import { SignIn } from '@/features/auth/signIn'
+import { Button } from '@/components/ui/button'
+import { TabSwitcher } from '@/components/ui/tabSwitcher'
 
 export function App() {
   return (
-    <SignIn />
-
-    // <Provider store={store}>
-    //   <Router />
-    //   <Button>kuku</Button>
-    //   <Decks />
-    // </Provider>
+    <div>
+      <Button variant={'primary'}>Link Button</Button>
+      <TabSwitcher buttonsName={['first-btn']} />
+    </div>
   )
 }
