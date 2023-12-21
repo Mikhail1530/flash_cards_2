@@ -1,5 +1,10 @@
-* {
-  color: #fffefe;
+.card {
+  width: 420px;
+  height: auto;
+  min-height: 200px;
+
+  background-color: var(--color-dark-700);
+  border: 2px solid var(--color-dark-500);
 }
 
 .card {
