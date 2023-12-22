@@ -18,10 +18,10 @@ export const Header = (props:HeaderProps) => {
 
 
   return (
-    <div className={s.header}>
+    <header className={s.header}>
       <a className={`${s.headerIcon}  ${className}`} href={logoLink}>{logoImg}</a>
       {children && <div className={s.body}>{children}</div>}
-    </div>
+    </header>
   )
 }
 

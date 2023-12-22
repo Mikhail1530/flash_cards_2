@@ -1,5 +1,8 @@
-import {ComponentPropsWithoutRef, ReactNode} from "react";
-import s from '../../../../cards/src/components/ui/card/card.module.scss'
+import {ComponentPropsWithoutRef, ReactNode} from "react"
+import s from '@/components/ui/card/card.module.scss'
+
+
+
 
 export type titleType = {
   text?: string

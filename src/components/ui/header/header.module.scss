@@ -4,7 +4,6 @@
   top: 0;
   left: 0;
   padding:0 9% ;
-//   padding:0 136px ;
 
   display: flex;
   align-items: center;
@@ -20,7 +19,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width:max-content;
+    min-width: 175px;
 }
 .btnMenu>*{
 display:fixed;
