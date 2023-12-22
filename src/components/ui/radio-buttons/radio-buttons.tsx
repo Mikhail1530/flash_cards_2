@@ -34,20 +34,18 @@ export const RadioButtons = (props: RadioButtonProps) => {
   }
 
   return (
-    <form>
-      <RadioGroup.Root onValueChange={handleChange} orientation={'vertical'}>
-        {props.option.map((radioBtn: ButtonType) => {
-          return (
-            <div className={s.radioAllItem} key={radioBtn.value}>
-              <RadioGroup.Item className={s.radioGroupItem} value={radioBtn.name}>
-                {renderRadioButton(selectedOption, radioBtn.name, radioBtn.isDisabled)}
-              </RadioGroup.Item>
-              <label>{radioBtn.name}</label>
-            </div>
-          )
-        })}
-      </RadioGroup.Root>
-    </form>
+    <RadioGroup.Root onValueChange={handleChange} orientation={'vertical'}>
+      {props.option.map((radioBtn: ButtonType) => {
+        return (
+          <div className={s.radioAllItem} key={radioBtn.value}>
+            <RadioGroup.Item className={s.radioGroupItem} value={radioBtn.name}>
+              {renderRadioButton(selectedOption, radioBtn.name, radioBtn.isDisabled)}
+            </RadioGroup.Item>
+            <label>{radioBtn.name}</label>
+          </div>
+        )
+      })}
+    </RadioGroup.Root>
   )
 }
 
