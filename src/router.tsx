@@ -31,7 +31,7 @@ export const Router = () => {
   return <RouterProvider router={router} />
 }
 function PrivateRoutes() {
-  const isAuthenticated = false
+  const isAuthenticated = true
 
   return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
 }
