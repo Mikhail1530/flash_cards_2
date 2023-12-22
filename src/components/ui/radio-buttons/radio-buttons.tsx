@@ -7,20 +7,24 @@ import s from './radio-button.module.scss'
 
 import RadioButtonSvg from './RadioButtonSvg'
 
-export type RadioButtonProps = {
+type ButtonType = {
   isDisabled: boolean
-  variant?: 'off' | 'on'
+  name: string
+  value: number
 }
-
+export type RadioButtonProps = {
+  option: ButtonType[]
+  variant?: 'Enable' | 'IsDisabled'
+}
 export const RadioButtons = (props: RadioButtonProps) => {
-  const [selectedOption, setSelectedOption] = useState<string>('option1')
+  const [selectedOption, setSelectedOption] = useState<string>('Option1')
 
   const handleChange = (value: string) => {
     setSelectedOption(value)
   }
 
   const renderRadioButton = (selectedValue: string, thisOption: string, isDisabled: boolean) => {
-    const fillColor = isDisabled ? `var(--color-accent-900)` : `var(--color-accent-500)`
+    const fillColor = isDisabled ? `var(--color-primary-900)` : `var(--color-primary-500)`
 
     if (selectedValue !== thisOption) {
       return <UnSelectRadioButtonSvg fillColor={fillColor} />
@@ -31,30 +35,17 @@ export const RadioButtons = (props: RadioButtonProps) => {
 
   return (
     <form>
-      <RadioGroup.Root
-        disabled={props.isDisabled}
-        onValueChange={handleChange}
-        orientation={'vertical'}
-        value={selectedOption}
-      >
-        <div className={s.radioAllItem}>
-          <RadioGroup.Item className={s.radioGroupItem} value={'option1'}>
-            {renderRadioButton(selectedOption, 'option1', props.isDisabled)}
-          </RadioGroup.Item>
-          <label>RadioGroup</label>
-        </div>
-        <div className={s.radioAllItem}>
-          <RadioGroup.Item className={s.radioGroupItem} value={'option2'}>
-            {renderRadioButton(selectedOption, 'option2', props.isDisabled)}
-          </RadioGroup.Item>
-          <label>RadioGroup</label>
-        </div>
-        <div className={s.radioAllItem}>
-          <RadioGroup.Item className={s.radioGroupItem} value={'option3'}>
-            {renderRadioButton(selectedOption, 'option3', props.isDisabled)}
-          </RadioGroup.Item>
-          <label>RadioGroup</label>
-        </div>
+      <RadioGroup.Root onValueChange={handleChange} orientation={'vertical'}>
+        {props.option.map((radioBtn: ButtonType) => {
+          return (
+            <div className={s.radioAllItem} key={radioBtn.value}>
+              <RadioGroup.Item className={s.radioGroupItem} value={radioBtn.name}>
+                {renderRadioButton(selectedOption, radioBtn.name, radioBtn.isDisabled)}
+              </RadioGroup.Item>
+              <label>{radioBtn.name}</label>
+            </div>
+          )
+        })}
       </RadioGroup.Root>
     </form>
   )
