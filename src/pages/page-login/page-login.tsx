@@ -5,17 +5,18 @@ import { Card } from '@/components/ui/card/card'
 import { CheckBox } from '@/components/ui/checkBox'
 import { Input } from '@/components/ui/input'
 import { Typography } from '@/components/ui/typography'
+import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import cx from 'clsx'
 import { z } from 'zod'
 
 import s from './page-login.module.scss'
 
-type FormValues = {
-  email: string
-  password: string
-  rememberMe: boolean
-}
+// type FormValues = {
+//   email: string
+//   password: string
+//   rememberMe: boolean
+// }
 
 const loginSchema = z.object({
   email: z.string().email({ message: 'Invalid email address' }),
@@ -23,6 +24,7 @@ const loginSchema = z.object({
   rememberMe: z.boolean(),
 })
 
+type FormValues = z.infer<typeof loginSchema>
 export const PageLogin = () => {
   const {
     control,
@@ -31,6 +33,7 @@ export const PageLogin = () => {
     register,
   } = useForm<FormValues>({
     defaultValues: { email: '', password: '', rememberMe: false },
+    mode: 'onSubmit',
     resolver: zodResolver(loginSchema),
   })
 
@@ -40,11 +43,12 @@ export const PageLogin = () => {
     return
   }
   const {
-    field: { onChange, value },
+    field: { onChange, ref, value },
   } = useController({ control, name: 'rememberMe' })
 
   return (
     <div className={s.wrapperCard}>
+      <DevTool control={control} />
       <Card className={s.intoAuthCard}>
         <Typography className={s.h1} variant={'large'}>
           Sign In
@@ -67,6 +71,7 @@ export const PageLogin = () => {
             {...register('rememberMe')}
             checked={value}
             onCheckedChange={onChange}
+            ref={ref}
           />
 
           <Button as={'a'} className={s.link} href={'//'} rel={'noopener nopener'} variant={'link'}>

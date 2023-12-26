@@ -9,11 +9,11 @@ import { z } from 'zod'
 
 import s from './page-sign-up.module.scss'
 
-type FormValues = {
-  confirmPassword: string
-  email: string
-  password: string
-}
+// type FormValues = {
+//   confirmPassword: string
+//   email: string
+//   password: string
+// }
 const loginSchema = z
   .object({
     confirmPassword: z.string().min(3),
@@ -25,6 +25,7 @@ const loginSchema = z
     path: ['confirmPassword'],
   })
 
+type FormValues = z.infer<typeof loginSchema>
 export const PageSignUp = () => {
   const linkHref = 'https://www.google.com/'
   const {
