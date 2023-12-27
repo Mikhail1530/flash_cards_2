@@ -2,19 +2,18 @@ import PagePersonalInfoNick from '@/pages/page-personal-info-nick/page-personal-
 import PageSignUp from '@/pages/sign-up/page-sign-up'
 import PagePersonalInfo from '@/pages/page-personal-info-nick/page-personal-info-nick'
 import AuthFogotPasswordCreatePass from '@/pages/auth-fogot-password-create-pass/auth-fogot-password-create-pass'
-import AuthFogotPasswordCheckEmail from "@/pages/auth-fogot-password-check-email/auth-fogot-password-check-email";
-import PageAuthForgotPassword from "@/pages/auth-fogot-password/page-auth-forgot-pass";
+import AuthFogotPasswordCheckEmail from '@/pages/auth-fogot-password-check-email/auth-fogot-password-check-email'
+import PageAuthForgotPassword from '@/pages/auth-fogot-password/page-auth-forgot-pass'
 
 export function App() {
   return (
     <div>
-        {/*<PageAuthForgotPassword/>*/}
+      {/*<PageAuthForgotPassword />*/}
       {/*<AuthFogotPasswordCheckEmail />*/}
       {/*<AuthFogotPasswordCreatePass />*/}
       {/*<PagePersonalInfo />*/}
-      {/*<PagePersonalInfo />*/}
       {/*<PagePersonalInfoNick />*/}
-      {/*<PageSignUp />*/}
+      <PageSignUp />
     </div>
   )
 }
