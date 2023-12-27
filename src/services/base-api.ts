@@ -1,8 +1,10 @@
 import {
   CreateDecksArgs,
+  GetAuthMeResponseType,
   GetDeckByIdArgs,
   GetDecksArgs,
   GetDecksResponse,
+  SignUpArgs,
 } from '@/pages/flashcards.types'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
@@ -25,6 +27,13 @@ export const baseApi = createApi({
           }
         },
       }),
+      getAuthMe: builder.query<GetAuthMeResponseType, void>({
+        query: () => {
+          return {
+            url: `v1/auth/me`,
+          }
+        },
+      }),
       getDeckById: builder.query<GetDecksResponse, GetDeckByIdArgs>({
         query: ({ id }) => {
           return {
@@ -40,10 +49,25 @@ export const baseApi = createApi({
           }
         },
       }),
+      signUp: builder.mutation<any, SignUpArgs>({
+        query: args => {
+          return {
+            body: args,
+            method: 'POST',
+            url: `v1/auth/sign-up`,
+          }
+        },
+      }),
     }
   },
   reducerPath: 'baseApi',
   // refetchOnFocus: true,
 })
 
-export const { useCreateDeckMutation, useGetDeckByIdQuery, useGetDecksQuery } = baseApi
+export const {
+  useCreateDeckMutation,
+  useGetAuthMeQuery,
+  useGetDeckByIdQuery,
+  useGetDecksQuery,
+  useSignUpMutation,
+} = baseApi
