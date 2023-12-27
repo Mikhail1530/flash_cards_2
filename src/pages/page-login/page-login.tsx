@@ -5,9 +5,8 @@ import { Card } from '@/components/ui/card/card'
 import { CheckBox } from '@/components/ui/checkBox'
 import { Input } from '@/components/ui/input'
 import { Typography } from '@/components/ui/typography'
-import { DevTool } from '@hookform/devtools'
+import { useLoginMutation } from '@/services/base-api'
 import { zodResolver } from '@hookform/resolvers/zod'
-import cx from 'clsx'
 import { z } from 'zod'
 
 import s from './page-login.module.scss'
@@ -26,6 +25,8 @@ const loginSchema = z.object({
 
 type FormValues = z.infer<typeof loginSchema>
 export const PageLogin = () => {
+  const [loginUser, { error }] = useLoginMutation()
+
   const {
     control,
     formState: { errors },
@@ -38,9 +39,7 @@ export const PageLogin = () => {
   })
 
   const onSubmit = (data: FormValues) => {
-    console.log(data)
-
-    return
+    loginUser(data)
   }
   const {
     field: { onChange, ref, value },
@@ -48,7 +47,7 @@ export const PageLogin = () => {
 
   return (
     <div className={s.wrapperCard}>
-      <DevTool control={control} />
+      {/*<DevTool control={control} />*/}
       <Card className={s.intoAuthCard}>
         <Typography className={s.h1} variant={'large'}>
           Sign In
@@ -58,13 +57,13 @@ export const PageLogin = () => {
             label={'Email'}
             type={'email'}
             {...register('email')}
-            error={errors.email?.message}
+            error={errors.email?.message ?? error ? 'Write it correctly here' : ''}
           />
           <Input
             label={'Password'}
             type={'password'}
             {...register('password')}
-            error={errors.password?.message}
+            error={errors.password?.message ?? error ? '...or here' : ''}
           />
           <CheckBox
             label={'Remember me'}
@@ -80,17 +79,9 @@ export const PageLogin = () => {
           <Button className={s.button} variant={'primary'}>
             Sign In
           </Button>
-          <div className={s.linkButton}>
-            <Button
-              as={'a'}
-              className={cx(s.link, s.dontHaveAccount)}
-              href={'/sign_up'}
-              rel={'noopener nopener'}
-              variant={'link'}
-            >
-              Dont have an account?
-            </Button>
-          </div>
+          <Typography className={s.dontHaveAccount} variant={'caption'}>
+            Dont have an account?
+          </Typography>
           <div className={s.underlineLinkWrapper}>
             <Button
               as={'a'}

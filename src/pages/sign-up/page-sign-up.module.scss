@@ -81,9 +81,9 @@
 }
 
 .alreadyHaveAccount {
+  display: flex;
   justify-content: center;
-  width: fit-content;
-  margin-bottom: 7px;
+  margin-bottom: 10px;
   color: var(--color-light-900);
 }
 

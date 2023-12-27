@@ -1,3 +1,32 @@
+.wrapperCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 96px;
+}
+
+.form {
+  width: 100%;
+}
+
+.intoAuthCard {
+  display: flex;
+  flex-direction: column;
+
+  padding: 33px 36px 25px;
+
+  background-color: var(--color-dark-700);
+  border: var(--color-border) solid 1px;
+}
+
+.h1 {
+  color: var(--color-light-100);
+}
+
+.linkButton {
+  display: flex;
+}
+
 .link {
   display: flex;
   justify-content: flex-end;
@@ -51,8 +80,10 @@
 }
 
 .dontHaveAccount {
+  display: flex;
   justify-content: center;
   width: fit-content;
   margin-bottom: 7px;
+  margin-bottom: 10px;
   color: var(--color-light-900);
 }

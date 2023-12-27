@@ -45,3 +45,21 @@ export type GetDecksResponseItems = {
   updated: string
   userId: string
 }
+export type SignUpArgs = {
+  email: string
+  html?: string
+  name?: string
+  password: string
+  sendConfirmationEmail?: boolean
+  subject?: string
+}
+
+export type GetAuthMeResponseType = {
+  avatar: string
+  created: string
+  email: string
+  id: string
+  isEmailVerified: boolean
+  name: string
+  updated: string
+}
