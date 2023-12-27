@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 96px;
 }
 
 .intoAuthCard {
@@ -15,18 +14,9 @@
   border: var(--color-border) solid 1px;
 }
 
-.form {
-  width: 100%;
-}
-
 .h1 {
-  color: var(--color-light-100);
+  margin-bottom: 50px;
   text-align: center;
-}
-
-.linkButton {
-  display: flex;
-  justify-content: center;
 }
 
 .link {
@@ -46,9 +36,10 @@
   padding: 6px 0;
 }
 
+
 .underlineLinkWrapper {
   position: relative;
-  text-align: center;
+  text-align: center
 }
 
 .underlineLink {
@@ -68,7 +59,7 @@
 }
 
 .underlineLink::after {
-  content: '';
+  content: "";
 
   position: absolute;
   bottom: 0;
@@ -80,22 +71,21 @@
   background-color: var(--color-primary-500);
 }
 
-.alreadyHaveAccount {
+.dontHaveAccount {
   justify-content: center;
   width: fit-content;
   margin-bottom: 7px;
   color: var(--color-light-900);
 }
 
-.ul {
-  .ul {
-    margin-bottom: 60px;
-  }
+.label {
+  display: flex;
+  padding-bottom: 65px;
+  color: var(--color-dark-100);
+}
 
-  .li {
-    margin-bottom: 20px;
-  }
-
-  .li:not(:last-child) {
-  }
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

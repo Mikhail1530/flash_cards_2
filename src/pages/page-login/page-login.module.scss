@@ -1,32 +1,3 @@
-.wrapperCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 96px;
-}
-
-.form {
-  width: 100%;
-}
-
-.intoAuthCard {
-  display: flex;
-  flex-direction: column;
-
-  padding: 33px 36px 25px;
-
-  background-color: var(--color-dark-700);
-  border: var(--color-border) solid 1px;
-}
-
-.h1 {
-  color: var(--color-light-100);
-}
-
-.linkButton {
-  display: flex;
-}
-
 .link {
   display: flex;
   justify-content: flex-end;
@@ -34,9 +5,9 @@
   margin-bottom: 60px;
   padding: 0;
 
-  font-size: var(--font-size-s);
-  font-weight: 100;
-  color: var(--color-light-100);
+  font-size: 14px;
+  font-weight: 400;
+  text-align: right;
 }
 
 .button {
@@ -44,9 +15,10 @@
   padding: 6px 0;
 }
 
+
 .underlineLinkWrapper {
   position: relative;
-  text-align: center;
+  text-align: center
 }
 
 .underlineLink {
@@ -57,14 +29,16 @@
   justify-content: center;
 
   width: auto;
-  padding: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
 
-  color: var((--color-primary-500));
+  color: var(--color-primary-500);
   text-decoration: none;
 }
 
 .underlineLink::after {
-  content: '';
+  content: "";
 
   position: absolute;
   bottom: 0;
@@ -78,6 +52,7 @@
 
 .dontHaveAccount {
   justify-content: center;
+  width: fit-content;
   margin-bottom: 7px;
   color: var(--color-light-900);
 }

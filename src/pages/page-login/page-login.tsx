@@ -107,3 +107,5 @@ export const PageLogin = () => {
     </div>
   )
 }
+
+export default PageLogin
