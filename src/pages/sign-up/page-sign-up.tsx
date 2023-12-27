@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card/card'
 import { Input } from '@/components/ui/input'
 import { Typography } from '@/components/ui/typography'
+import { useSignUpMutation } from '@/services/base-api'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -18,7 +19,10 @@ const loginSchema = z
   .object({
     confirmPassword: z.string().min(3),
     email: z.string().email({ message: 'Invalid email address' }),
-    password: z.string().min(3, { message: 'Too short password' }),
+    password: z
+      .string()
+      .min(3, { message: 'Too short password' })
+      .max(30, { message: 'Too long password' }),
   })
   .refine(data => data.password === data.confirmPassword, {
     message: "Password don't match",
@@ -26,16 +30,18 @@ const loginSchema = z
   })
 
 type FormValues = z.infer<typeof loginSchema>
+
 export const PageSignUp = () => {
-  const linkHref = 'https://www.google.com/'
+  const [signUp, { error }] = useSignUpMutation()
   const {
+    clearErrors,
     formState: { errors },
     handleSubmit,
     register,
   } = useForm<FormValues>({ resolver: zodResolver(loginSchema) })
 
   const onSubmit = (data: FormValues) => {
-    console.log(data)
+    signUp({ email: data.email, password: data.password })
   }
 
   return (
@@ -48,10 +54,11 @@ export const PageSignUp = () => {
           <ul className={s.ul}>
             <li className={s.li}>
               <Input
-                error={errors.email?.message}
+                error={errors.email?.message ?? error?.data.errorMessages[0]}
                 label={'Email'}
                 type={'email'}
                 {...register('email')}
+                onChange={() => clearErrors()}
               />
             </li>
             <li className={s.li}>
@@ -74,23 +81,14 @@ export const PageSignUp = () => {
           <Button className={s.button} variant={'primary'}>
             Sign Up
           </Button>
-          <div className={s.linkButton}>
-            <Button
-              as={'a'}
-              className={`${s.link} ${s.alreadyHaveAccount}`}
-              href={linkHref}
-              rel={'noopener nopener'}
-              target={'_blank'}
-              variant={'link'}
-            >
-              Already have an account?
-            </Button>
-          </div>
+          <Typography className={s.alreadyHaveAccount} variant={'caption'}>
+            Already have an account?
+          </Typography>
           <div className={s.underlineLinkWrapper}>
             <Button
               as={'a'}
               className={s.underlineLink}
-              href={linkHref}
+              href={'/#'}
               rel={'noopener nopener'}
               target={'_blank'}
               variant={'link'}

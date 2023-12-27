@@ -23,10 +23,12 @@
   color: var(--color-light-100);
   text-align: center;
 }
+
 .linkButton {
   display: flex;
   justify-content: center;
 }
+
 .link {
   display: flex;
   justify-content: flex-end;
@@ -79,9 +81,9 @@
 }
 
 .alreadyHaveAccount {
+  display: flex;
   justify-content: center;
-  width: fit-content;
-  margin-bottom: 7px;
+  margin-bottom: 10px;
   color: var(--color-light-900);
 }
 
@@ -91,7 +93,4 @@
 
 .li {
   margin-bottom: 20px;
-}
-
-.li:not(:last-child) {
 }
