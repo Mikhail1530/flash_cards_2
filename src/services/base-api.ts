@@ -1,8 +1,13 @@
 import {
   CreateDecksArgs,
+  GetAuthMeResponseType,
   GetDeckByIdArgs,
   GetDecksArgs,
   GetDecksResponse,
+  LoginArgs,
+  LoginResponseType,
+  SignUpArgs,
+  UpdateUserDataArgs,
 } from '@/pages/flashcards.types'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
@@ -25,6 +30,13 @@ export const baseApi = createApi({
           }
         },
       }),
+      getAuthMe: builder.query<GetAuthMeResponseType, void>({
+        query: () => {
+          return {
+            url: `v1/auth/me`,
+          }
+        },
+      }),
       getDeckById: builder.query<GetDecksResponse, GetDeckByIdArgs>({
         query: ({ id }) => {
           return {
@@ -40,10 +52,60 @@ export const baseApi = createApi({
           }
         },
       }),
+      logIn: builder.mutation<LoginResponseType, LoginArgs>({
+        query: args => {
+          return {
+            body: args,
+            method: 'POST',
+            url: `v1/auth/login`,
+          }
+        },
+      }),
+      logOut: builder.query<void, void>({
+        query: () => {
+          return {
+            url: 'v1/auth/logout',
+          }
+        },
+      }),
+      signUp: builder.mutation<any, SignUpArgs>({
+        query: args => {
+          return {
+            body: args,
+            method: 'POST',
+            url: `v1/auth/sign-up`,
+          }
+        },
+      }),
+      updateUserData: builder.mutation<GetAuthMeResponseType, UpdateUserDataArgs>({
+        query: args => {
+          const formData = new FormData()
+
+          formData.append('avatar', `${args.avatar}`)
+          formData.append('name', `${args.name}`)
+
+          return {
+            body: formData,
+            headers: {
+              'Content-Type': 'multipart/form-data;',
+            },
+            method: 'PATCH',
+            url: `v1/auth/me`,
+          }
+        },
+      }),
     }
   },
   reducerPath: 'baseApi',
   // refetchOnFocus: true,
 })
 
-export const { useCreateDeckMutation, useGetDeckByIdQuery, useGetDecksQuery } = baseApi
+export const {
+  useCreateDeckMutation,
+  useGetAuthMeQuery,
+  useGetDeckByIdQuery,
+  useGetDecksQuery,
+  useLogInMutation,
+  useSignUpMutation,
+  useUpdateUserDataMutation,
+} = baseApi

@@ -1,8 +1,9 @@
+import { AuthWrapper } from '@/components/auth/auth-wrapper/auth-wrapper'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card/card'
 import { Input } from '@/components/ui/input'
 
-import s from './page-auth-forgot-pass.module.scss'
+import s from '../page-personal-info-nick/page-personal-info-nick.module.scss'
 
 export const PageAuthForgotPassword = () => {
   const linkHref = 'https://www.google.com/'
@@ -50,3 +51,20 @@ export const PageAuthForgotPassword = () => {
 }
 
 export default PageAuthForgotPassword
+
+const PageAuthForgotPassword2 = () => {
+  return (
+    <AuthWrapper
+      button={'Send Instructions'}
+      firstLink={'Did you remember your password?'}
+      labelAbove={'Enter your email address and we will send you further instructions'}
+      redirectText={'Send Instructions'}
+      secondLink={'Try logging in'}
+      title={'Forgot your password?'}
+    >
+      <div>
+        <Input label={'Email'} style={{ marginBottom: '20px' }} />
+      </div>
+    </AuthWrapper>
+  )
+}
