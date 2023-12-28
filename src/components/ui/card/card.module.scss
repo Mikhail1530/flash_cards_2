@@ -1,10 +1,5 @@
-.card {
-  width: 420px;
-  height: auto;
-  min-height: 200px;
-
-  background-color: var(--color-dark-700);
-  border: 2px solid var(--color-dark-500);
+* {
+  color: #fffefe;
 }
 
 .card {
@@ -14,6 +9,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  width: 420px;
+  height: 552px;
 
   border: 1px solid #313131;
   border-radius: 2px;
