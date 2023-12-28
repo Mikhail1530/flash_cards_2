@@ -4,7 +4,11 @@ import {
   GetDeckByIdArgs,
   GetDecksArgs,
   GetDecksResponse,
+  LoginArgs,
+  LoginResponseType,
   SignUpArgs,
+  UpdateUserDataArgs,
+  UpdateUserDataResponseType,
 } from '@/pages/flashcards.types'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
@@ -49,12 +53,37 @@ export const baseApi = createApi({
           }
         },
       }),
+      logIn: builder.mutation<LoginResponseType, LoginArgs>({
+        query: args => {
+          return {
+            body: args,
+            method: 'POST',
+            url: `v1/auth/login`,
+          }
+        },
+      }),
+      logOut: builder.query<void, void>({
+        query: () => {
+          return {
+            url: 'v1/auth/logout',
+          }
+        },
+      }),
       signUp: builder.mutation<any, SignUpArgs>({
         query: args => {
           return {
             body: args,
             method: 'POST',
             url: `v1/auth/sign-up`,
+          }
+        },
+      }),
+      updateUserData: builder.mutation<UpdateUserDataResponseType, UpdateUserDataArgs>({
+        query: args => {
+          return {
+            body: args,
+            method: 'PATCH',
+            url: `v1/auth/me`,
           }
         },
       }),
@@ -69,5 +98,7 @@ export const {
   useGetAuthMeQuery,
   useGetDeckByIdQuery,
   useGetDecksQuery,
+  useLogInMutation,
   useSignUpMutation,
+  useUpdateUserDataMutation,
 } = baseApi
