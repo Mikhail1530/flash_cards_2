@@ -1,15 +1,17 @@
+import { Provider } from 'react-redux'
+
 import HeaderIcon from '@/assets/icons/headerIcon'
 import { Button } from '@/components/ui/button'
-import Header from '@/components/ui/header/header'
-import s from '@/app.module.scss'
-import DesksPage from '@/pages/desksPage/desksPage'
-import { Provider } from 'react-redux'
-import { store } from '@/services/store'
 import CustomDropdownMenu, {
   MenuItem,
   MenuSeparator,
   SubMenu,
 } from '@/components/ui/customDropdownMenu/customDropdownMenu'
+import Header from '@/components/ui/header/header'
+import DesksPage from '@/pages/desksPage/desksPage'
+import { store } from '@/services/store'
+
+import s from '@/app.module.scss'
 
 export function App() {
   const isLogedIn = true
@@ -29,10 +31,10 @@ export function App() {
               triggerContent={
                 <Button className={s.btnMenu}>
                   <img
+                    className={s.avatar}
                     src={
                       'https://banner2.cleanpng.com/20180707/puq/kisspng-computer-icons-avatar-clip-art-5b40601d5c8c75.9330992415309455653791.jpg'
                     }
-                    className={s.avatar}
                   />
                 </Button>
               }
