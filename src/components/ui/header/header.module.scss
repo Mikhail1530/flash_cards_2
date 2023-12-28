@@ -1,8 +1,6 @@
 .header {
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  left: 0;
+  position: relative;
+  padding: 0 9%;
 
   display: flex;
   align-items: center;
@@ -14,11 +12,27 @@
   background-color: var(--color-dark-700);
   border-bottom: 1px solid var(--color-dark-500);
 }
-
+.body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 175px;
+  position: relative;
+}
+.btnMenu > * {
+  display: fixed;
+  justify-content: center;
+  align-items: center;
+}
+.btnMenu {
+  display: fixed;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+  border-radius: 30px;
+}
 .headerIcon {
-  margin-left: 136px;
 }
 
 .headerButton {
-  margin-right: 137px;
 }

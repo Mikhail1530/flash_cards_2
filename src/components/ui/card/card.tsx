@@ -1,21 +1,36 @@
-import { ComponentProps, ElementType, ReactNode } from 'react'
+import {ComponentPropsWithoutRef, ReactNode} from "react"
+import s from '@/components/ui/card/card.module.scss'
 
-import cx from 'clsx'
 
-import s from './card.module.scss'
 
-type CardProps<T extends ElementType> = {
-  as?: T
-  className: string
-  icon: ReactNode
-} & ComponentProps<T>
-export const Card = <T extends ElementType>(props: CardProps<T>) => {
-  const { as: Component = 'div', children, className, icon, ...rest } = props
+
+export type titleType = {
+  text?: string
+  iconElement?: ReactNode
+  iconSize?: string
+}
+export type CardProps = {
+  variant?: 'dark' | 'light' | 'white'
+  title?: titleType
+  width?: string
+  className?: string
+} & ComponentPropsWithoutRef<"div">
+
+export const Card = (props: CardProps) => {
+  const {className, variant = 'dark', ...rest} = props
+  const sizeCard = {
+    width: props.width
+  }
 
   return (
-    <Component className={cx(s.card, className ?? '')} {...rest}>
-      {icon && <div className={s.icon}>{icon}</div>}
-      {children}
-    </Component>
+    <div {...rest} className={`${s.card} ${s[variant]} ${className}`} style={sizeCard}>
+      {props.title &&
+        <div className={s.cardHeader}>
+          <div className={s.iconSize}>{props.title.iconElement}</div>
+          <h3>{props.title.text}</h3>
+        </div>}
+
+      {props.children && <div className={s.body}>{props.children}</div>}
+    </div>
   )
 }
