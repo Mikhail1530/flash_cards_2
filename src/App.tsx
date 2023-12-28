@@ -14,6 +14,7 @@ export function App() {
       {/*<PagePersonalInfo />*/}
       {/*<PagePersonalInfoNick />*/}
       <PageSignUp />
+        
     </div>
   )
 }
