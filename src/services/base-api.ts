@@ -8,7 +8,6 @@ import {
   LoginResponseType,
   SignUpArgs,
   UpdateUserDataArgs,
-  UpdateUserDataResponseType,
 } from '@/pages/flashcards.types'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
@@ -78,10 +77,18 @@ export const baseApi = createApi({
           }
         },
       }),
-      updateUserData: builder.mutation<UpdateUserDataResponseType, UpdateUserDataArgs>({
+      updateUserData: builder.mutation<GetAuthMeResponseType, UpdateUserDataArgs>({
         query: args => {
+          const formData = new FormData()
+
+          formData.append('avatar', `${args.avatar}`)
+          formData.append('name', `${args.name}`)
+
           return {
-            body: args,
+            body: formData,
+            headers: {
+              'Content-Type': 'multipart/form-data;',
+            },
             method: 'PATCH',
             url: `v1/auth/me`,
           }
