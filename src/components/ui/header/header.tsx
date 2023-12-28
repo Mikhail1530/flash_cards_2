@@ -1,27 +1,28 @@
-import { ComponentPropsWithoutRef, ReactNode } from 'react'
+import { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 import s from './header.module.scss'
 
 
 
-export type HeaderProps = {
+export type HeaderProps<T extends ElementType = 'header'>  = {
   buttonsVariant?: 'primary' | 'secondary' | 'tertiary'
   className?: string
   logoImg: ReactNode
   logoLink: string
   variant?: 'average' | 'dark' | 'light'
-} & ComponentPropsWithoutRef<'div'>
+  as?:T
+} & ComponentPropsWithoutRef<T>
 
 
 
 export const Header = (props:HeaderProps) => {
-  const { children, className, logoImg,logoLink, ...rest } = props
+  const { children, className, logoImg,logoLink,as:Component='header', ...rest } = props
 
 
   return (
-    <header className={s.header}>
+    <Component className={s.header}>
       <a className={`${s.headerIcon}  ${className}`} href={logoLink}>{logoImg}</a>
       {children && <div className={s.body}>{children}</div>}
-    </header>
+    </Component>
   )
 }
 

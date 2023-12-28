@@ -1,15 +1,17 @@
-import React, { useState, ReactNode } from "react";
+import { useState, ReactNode, ComponentPropsWithoutRef, ElementType } from "react";
+import { NavLink } from 'react-router-dom'
 
 import s from './customDropdownMenu.module.scss'
 
-interface CustomDropdownMenuProps {
+export type CustomDropdownMenuProps<T extends ElementType = 'nav'>  ={
   children: ReactNode
   triggerContent: ReactNode
-}
+  className?:string
+}& ComponentPropsWithoutRef<T>
 
-const CustomDropdownMenu: React.FC<CustomDropdownMenuProps> = ({ triggerContent, children
+const CustomDropdownMenu: React.FC<CustomDropdownMenuProps> = ({ triggerContent, children,className
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const handleToggle = () => {
     setIsOpen(!isOpen)
   }
@@ -23,13 +25,16 @@ const CustomDropdownMenu: React.FC<CustomDropdownMenuProps> = ({ triggerContent,
 };
 
 interface MenuItemProps {
-  children: ReactNode
+  children: string
+  // children: ReactNode
+  path?:string
   shortcut?: string
 }
 
-export const MenuItem: React.FC<MenuItemProps> = ({ children, shortcut }) => (
+export const MenuItem: React.FC<MenuItemProps> = ({ children,path, shortcut }) => (
   <div className={s.menuItem}>
-    <span>{children}</span>
+    {/*<NavLink to={`path? '{path}': '/'`}>{children}</NavLink>*/}
+    <div>{children}</div>
     {shortcut && <span className={s.shortcut}>{shortcut}</span>}
   </div>
 )
