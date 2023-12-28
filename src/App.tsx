@@ -25,7 +25,6 @@ export function App() {
             'https://ui-kit.it-incubator.io/?path=/story/components-data-display-card--primary-with-icon'
           }
         >
-          {/*<RadixDropdownMenu />*/}
           {isLogedIn ? (
             <CustomDropdownMenu
               triggerContent={
