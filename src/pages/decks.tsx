@@ -6,12 +6,24 @@ import {
   TableHeadCell,
   TableRow,
 } from '@/components/ui/table/table'
-import { useGetDecksQuery } from '@/services/base-api'
+import { useCreateDeckMutation, useGetDeckByIdQuery, useGetDecksQuery } from '@/services/base-api'
 
-export const Decks = () => {
-  const { data } = useGetDecksQuery({ currentPage: 1 })
-  // const { data: deckByIdData } = useGetDeckByIdQuery({ id: 'clpuyvj1o01y0ry2xjr6yeuny' })
-  // const [createDeck, { isLoading: is }] = useCreateDeckMutation()
+type propsType = {
+  currentPage: number
+  maxCardsCount: number
+  minCardsCount: number
+  name: string
+}
+
+export const Decks = ({ currentPage, maxCardsCount, minCardsCount, name }: propsType) => {
+  const { data } = useGetDecksQuery({
+    currentPage,
+    maxCardsCount,
+    minCardsCount,
+    name,
+  })
+  const { data: deckByIdData } = useGetDeckByIdQuery({ id: 'clpuyvj1o01y0ry2xjr6yeuny' })
+  const [createDeck, { isLoading: is }] = useCreateDeckMutation()
 
   return (
     <>
