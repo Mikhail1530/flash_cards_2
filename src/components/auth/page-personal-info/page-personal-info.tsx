@@ -1,19 +1,20 @@
 import img from '@/assets/icons/icon-png/user.png'
 import { AuthWrapper } from '@/components/auth/auth-wrapper/auth-wrapper'
-import { Input } from '@/components/ui/input'
 
-import s from '@/pages/page-personal-info-nick/page-personal-info-nick.module.scss'
+import s from '@/components/auth/page-personal-info/page-personal-info.module.scss'
 
 const PagePersonalInfo = () => {
   return (
     <AuthWrapper
-      button={'Save Changes'}
+      button={'Logout'}
+      buttonStyle={'secondary'}
+      labelAbove={'j&johnson@gmail.com'}
+      labelAboveStyle={s.label}
       redirectText={'Send Instructions'}
       title={'Personal Information'}
     >
-      <div className={s.inputWraper}>
-        <img alt={'Your Image'} src={img} />
-        <Input label={'Nickmame'} type={'password'} />
+      <div className={s.img}>
+        <img alt={'Your Image'} className={s.yourImageClass} src={img} />
       </div>
     </AuthWrapper>
   )

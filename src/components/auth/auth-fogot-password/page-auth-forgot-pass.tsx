@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card/card'
 import { Input } from '@/components/ui/input'
 
-import s from '../page-personal-info-nick/page-personal-info-nick.module.scss'
+import s from '@/components/auth/page-personal-info-nick/page-personal-info-nick.module.scss'
 
 export const PageAuthForgotPassword = () => {
   const linkHref = 'https://www.google.com/'

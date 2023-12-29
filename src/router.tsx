@@ -5,7 +5,7 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from 'react-router-dom'
-import PageLogin from '@/pages/page-login/page-login'
+import PageLogin from '@/components/auth/page-login/page-login'
 import { Decks } from '@/pages/decks'
 
 const publicRotes: RouteObject[] = [
