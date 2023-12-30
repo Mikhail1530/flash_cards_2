@@ -1,27 +1,34 @@
-import { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
+import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
+
+import DropdownMenuAvatar from '@/components/ui/customDropdownMenu/dropdownMenuAvatar'
+
 import s from './header.module.scss'
 
-
-
-export type HeaderProps<T extends ElementType = 'header'>  = {
+export type HeaderProps<T extends ElementType = 'header'> = {
+  as?: T
   buttonsVariant?: 'primary' | 'secondary' | 'tertiary'
   className?: string
+  isAuth?: boolean
   logoImg: ReactNode
   logoLink: string
   variant?: 'average' | 'dark' | 'light'
-  as?:T
 } & ComponentPropsWithoutRef<T>
 
-
-
-export const Header = (props:HeaderProps) => {
-  const { children, className, logoImg,logoLink,as:Component='header', ...rest } = props
-
+export const Header = (props: HeaderProps) => {
+  const { as: Component = 'header', children, className, logoImg, logoLink, ...rest } = props
 
   return (
-    <Component className={s.header}>
-      <a className={`${s.headerIcon}  ${className}`} href={logoLink}>{logoImg}</a>
-      {children && <div className={s.body}>{children}</div>}
+    <Component className={`${s.header} ${className}`}>
+      <a className={`${s.headerIcon}`} href={logoLink}>
+        {logoImg}
+      </a>
+      {props.isAuth ? (
+        <div>
+          <DropdownMenuAvatar />
+        </div>
+      ) : (
+        ''
+      )}
     </Component>
   )
 }

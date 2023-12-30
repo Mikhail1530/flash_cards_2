@@ -30,7 +30,7 @@ const CustomDropdownMenu: React.FC<CustomDropdownMenuProps> = ({
 }
 
 interface MenuItemProps {
-  children: string
+  children: ReactNode | string
   // children: ReactNode
   path?: string
   shortcut?: string
