@@ -1,1 +1,0 @@
-export * from '../../../../../flash_cards_2/src/components/ui/card'
