@@ -1,30 +1,20 @@
 import { Provider } from 'react-redux'
 
 import HeaderIcon from '@/assets/icons/headerIcon'
-import { Button } from '@/components/ui/button'
-import CustomDropdownMenu, {
-  MenuItem,
-  MenuSeparator,
-  SubMenu,
-} from '@/components/ui/customDropdownMenu/customDropdownMenu'
 import Header from '@/components/ui/header/header'
-import DesksPage from '@/pages/desksPage/desksPage'
+import { Router } from '@/router'
 import { store } from '@/services/store'
-import img from '@/assets/icons/icon-png/user.png'
-import logo from '@/assets/icons/'
-
-import s from '@/app.module.scss'
-import { Typography } from '@/components/ui/typography'
 
 export function App() {
-  const isLogedIn = true
-
   return (
-    <Header
-      isAuth
-      logoImg={<HeaderIcon />}
-      logoLink={'https://www.google.com/imghp?hl=en'}
-    ></Header>
+    <Provider store={store}>
+      <Header
+        isAuth
+        logoImg={<HeaderIcon />}
+        logoLink={'https://www.google.com/imghp?hl=en'}
+      ></Header>
+      <Router />
+    </Provider>
     // <CustomDropdownMenu
     //     triggerContent={
     //         <div style={{display: 'flex', justifyContent: 'flex-end'}}>
