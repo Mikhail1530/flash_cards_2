@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/card/card'
 import { CheckBox } from '@/components/ui/checkBox'
 import { Input } from '@/components/ui/input'
 import { Typography } from '@/components/ui/typography'
-import { useLoginMutation } from '@/services/base-api'
+import { useLogInMutation } from '@/services/base-api'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -25,7 +25,7 @@ const loginSchema = z.object({
 
 type FormValues = z.infer<typeof loginSchema>
 export const PageLogin = () => {
-  const [loginUser, { error }] = useLoginMutation()
+  const [loginUser, { error }] = useLogInMutation()
 
   const {
     control,

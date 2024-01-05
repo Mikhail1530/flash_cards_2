@@ -7,7 +7,6 @@ import {
   LoginArgs,
   LoginResponseType,
   SignUpArgs,
-  UpdateUserDataArgs,
 } from '@/pages/flashcards.types'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
@@ -15,9 +14,9 @@ export const baseApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.flashcards.andrii.es',
     credentials: 'include',
-    prepareHeaders: headers => {
-      headers.append('x-auth-skip', 'true')
-    },
+    // prepareHeaders: headers => {
+    //   headers.append('x-auth-skip', 'true')
+    // },
   }),
   endpoints: builder => {
     return {
@@ -77,18 +76,10 @@ export const baseApi = createApi({
           }
         },
       }),
-      updateUserData: builder.mutation<GetAuthMeResponseType, UpdateUserDataArgs>({
-        query: args => {
-          const formData = new FormData()
-
-          formData.append('avatar', `${args.avatar}`)
-          formData.append('name', `${args.name}`)
-
+      updateUserData: builder.mutation<GetAuthMeResponseType, FormData>({
+        query: formData => {
           return {
             body: formData,
-            headers: {
-              'Content-Type': 'multipart/form-data;',
-            },
             method: 'PATCH',
             url: `v1/auth/me`,
           }

@@ -34,7 +34,6 @@ type FormValues = z.infer<typeof loginSchema>
 export const PageSignUp = () => {
   const [signUp, { error }] = useSignUpMutation()
   const {
-    clearErrors,
     formState: { errors },
     handleSubmit,
     register,
@@ -58,7 +57,6 @@ export const PageSignUp = () => {
                 label={'Email'}
                 type={'email'}
                 {...register('email')}
-                onChange={() => clearErrors()}
               />
             </li>
             <li className={s.li}>

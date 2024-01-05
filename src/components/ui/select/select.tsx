@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, FC } from 'react'
 
-import { ArrowDownIcon } from '@/assets/icons/arrowDownIcon'
+import ArrowDownIcon from '@/assets/icons/arrowDownIcon'
 import * as SelectRadix from '@radix-ui/react-select'
 
 import s from './select.module.scss'

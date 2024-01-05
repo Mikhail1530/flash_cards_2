@@ -72,16 +72,6 @@ export type LoginArgs = {
   rememberMe: boolean
 }
 
-export type UpdateUserDataResponseType = {
-  avatar: string
-  created: string
-  email: string
-  id: string
-  isEmailVerified: boolean
-  name: string
-  updated: string
-}
-
 export type UpdateUserDataArgs = {
   avatar?: string
   email?: string

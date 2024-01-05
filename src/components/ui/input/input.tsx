@@ -16,6 +16,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const [show, setShow] = useState(false)
 
     const showPass = () => setShow(!show)
+
     const showClearButton = type === 'search' && rest?.value?.toString().length! > 0
     const showError = !!error && error.length > 0
     const classInput = cx(s[type], s.input, showError && s.error, className)

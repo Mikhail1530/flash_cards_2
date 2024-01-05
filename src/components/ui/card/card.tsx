@@ -7,7 +7,7 @@ import s from './card.module.scss'
 type CardProps<T extends ElementType> = {
   as?: T
   className: string
-  icon: ReactNode
+  icon?: ReactNode
 } & ComponentProps<T>
 export const Card = <T extends ElementType>(props: CardProps<T>) => {
   const { as: Component = 'div', children, className, icon, ...rest } = props

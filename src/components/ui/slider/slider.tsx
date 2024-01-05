@@ -6,7 +6,7 @@ import s from './slider.module.scss'
 
 type SliderProps = {
   setSliderValue: (newValues: number[]) => void
-  sliderValue?: number[]
+  sliderValue: number[]
 } & ComponentPropsWithoutRef<typeof SliderRadix.Root>
 export const Slider: FC<SliderProps> = ({ setSliderValue, sliderValue, value, ...rest }) => {
   const onHandlerChange = (newValues: number[]) => {
