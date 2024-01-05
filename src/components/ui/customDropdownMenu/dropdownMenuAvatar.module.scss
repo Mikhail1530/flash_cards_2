@@ -1,0 +1,53 @@
+.yourImageClass {
+  width: 100%;
+}
+
+.firstItem {
+  display: flex;
+  flex-direction: row;
+}
+
+.avatarWrapper {
+  display: flex;
+}
+
+.avatarWrapperSecond {
+  display: flex;
+  width: 36px;
+  padding-top: 5px;
+
+  justifyContent: flex-end;
+}
+
+.nameEmail {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0;
+  padding-left: 8px;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+}
+
+.email {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--color-dark-100);
+  text-align: left;
+  letter-spacing: 0;
+}
+
+.simpleItem {
+  display: flex;
+  flex-direction: row;
+  column-gap: 6px;
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}

@@ -1,11 +1,19 @@
 import { Provider } from 'react-redux'
 
+import HeaderIcon from '@/assets/icons/headerIcon'
 import { Header } from '@/components/ui/header'
-import { Decks } from '@/pages/decks'
-import { UpdateForm } from '@/pages/delete'
-import { PageLogin } from '@/pages/page-login/page-login'
+import { Router } from '@/router'
 import { store } from '@/services/store'
 
 export function App() {
-  return <div></div>
+  return (
+    <Provider store={store}>
+      <Header
+        isAuth
+        logoImg={<HeaderIcon />}
+        logoLink={'https://www.google.com/imghp?hl=en'}
+      ></Header>
+      <Router />
+    </Provider>
+  )
 }

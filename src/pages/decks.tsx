@@ -1,3 +1,10 @@
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
+import EditIcon from '@/assets/icons/editIcon'
+import PlayIcon from '@/assets/icons/playIcon'
+import TrashIcon from '@/assets/icons/trashIcon'
+import { Button } from '@/components/ui/button'
 import {
   Table,
   TableBody,
@@ -6,22 +13,68 @@ import {
   TableHeadCell,
   TableRow,
 } from '@/components/ui/table/table'
-import { useGetDecksQuery } from '@/services/base-api'
+import { PATH } from '@/router'
+import { appAC } from '@/services/app.slice'
+import {
+  useCreateDeckMutation,
+  useGetDeckByIdQuery,
+  useGetDecksQuery,
+  useRemoveDeckMutation,
+} from '@/services/decks/decks.servies'
 
-export const Decks = () => {
-  const { data } = useGetDecksQuery({ currentPage: 1 })
+import s from './desksPage/desksPage.module.scss'
+
+type propsType = {
+  currentPage: number
+  maxCardsCount: number
+  minCardsCount: number
+  name: string
+  userId: string
+}
+//refetch-обновить данные, новый запрос
+export const Decks = ({ currentPage, maxCardsCount, minCardsCount, name, userId }: propsType) => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { data, error, refetch } = useGetDecksQuery({
+    currentPage,
+    maxCardsCount,
+    minCardsCount,
+    name,
+  })
   // const { data: deckByIdData } = useGetDeckByIdQuery({ id: 'clpuyvj1o01y0ry2xjr6yeuny' })
-  // const [createDeck, { isLoading: is }] = useCreateDeckMutation()
+  const { data: userDecks, error: userDecksErr } = useGetDeckByIdQuery({
+    maxCardsCount,
+    minCardsCount,
+    name,
+    userId,
+  })
+  const [createDeck, { isLoading: is }] = useCreateDeckMutation()
+  // const [data, error] = useRemoveDeckMutation()
+  const [removeDeck, { isLoading: isRemoved }] = useRemoveDeckMutation()
+
+  // const [updateDeck, { isLoading: isUpdating }] = useUpdatePostMutation()
+  // if( error ){
+  //   return <h2>{error.data.message}</h2>
+  //   // return <h2>{JSON.stringify(error)}</h2>
+  // }
+
+  const getCards = (el: any) => {
+    dispatch(appAC.setDecksId(el.id))
+    dispatch(appAC.setDecksName(el.name))
+    dispatch(appAC.setDecksImg(el.cover))
+    navigate(PATH.cards)
+  }
 
   return (
     <>
       <Table>
-        <TableHead>
+        <TableHead className={s.tableHead}>
           <TableRow>
             <TableHeadCell>Name</TableHeadCell>
             <TableHeadCell>Cards</TableHeadCell>
-            <TableHeadCell>Updated</TableHeadCell>
-            <TableHeadCell>Author</TableHeadCell>
+            <TableHeadCell>Last Updated</TableHeadCell>
+            <TableHeadCell>Created by</TableHeadCell>
+            <TableHeadCell></TableHeadCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -32,6 +85,17 @@ export const Decks = () => {
                 <TableCell>{el.cardsCount}</TableCell>
                 <TableCell>{new Date(el.updated).toLocaleDateString()}</TableCell>
                 <TableCell>{el.author.name}</TableCell>
+                <TableCell>
+                  <Button onClick={() => getCards(el)} title={'play'}>
+                    <PlayIcon colorFill={'#fff'} />
+                  </Button>
+                  <Button title={'edit cards'}>
+                    <EditIcon colorFill={'#fff'} />
+                  </Button>
+                  <Button onClick={() => removeDeck(el)} title={'delete cards'}>
+                    <TrashIcon colorFill={'#fff'} />
+                  </Button>
+                </TableCell>
               </TableRow>
             )
           })}

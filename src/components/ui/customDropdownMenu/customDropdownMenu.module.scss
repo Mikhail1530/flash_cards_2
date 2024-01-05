@@ -1,0 +1,94 @@
+.dropdownMenu {
+  position: relative;
+}
+
+.trigger {
+  cursor: pointer;
+  width: 36px;
+}
+
+.content {
+  position: absolute;
+  z-index: 1000;
+  top: 45px;
+  right: 0;
+
+  display: none;
+
+  min-width: 200px;
+  padding: 12px;
+
+  color: var(--color-light-100);
+
+  background-color: var(--color-dark-500);
+  border: 1px solid #4c4c4c;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: -6%;
+    right: 10px;
+
+    display: block;
+
+    width: 0;
+    height: 0;
+
+    border-right: 7px solid transparent;
+    border-bottom: 10px solid #4c4c4c;
+    border-left: 7px solid transparent;
+  }
+}
+
+.dropdownMenu:hover .content {
+  display: block;
+}
+
+.menuItem {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.menuSeparator {
+  margin: 4px 0;
+  border-top: 1px solid #4c4c4c;
+}
+
+.subMenu {
+  position: relative;
+  display: inline-block;
+}
+
+.subTrigger {
+  cursor: pointer;
+  color: #888;
+}
+
+.subContent {
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 100%;
+
+  display: none;
+
+  padding: 8px;
+
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+}
+
+.subMenu:hover .subContent {
+  display: block;
+}
+
+.shortcut {
+  margin-left: 8px;
+  color: #888;
+}

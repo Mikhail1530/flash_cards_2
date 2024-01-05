@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
 
+import { AuthWrapper } from '@/components/auth/auth-wrapper/auth-wrapper'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card/card'
 import { Input } from '@/components/ui/input'
@@ -97,5 +98,33 @@ export const PageSignUp = () => {
         </form>
       </Card>
     </div>
+  )
+}
+
+export default PageSignUp
+
+export const PageSignUp2 = () => {
+  return (
+    <AuthWrapper
+      button={'Sign Up'}
+      firstLink={'Already have an account?'}
+      redirectText={'Send Instructions'}
+      secondLink={'Sign In'}
+      title={'Sign Up'}
+    >
+      <div>
+        <ul className={s.ul}>
+          <li className={s.li}>
+            <Input label={'Email'} />
+          </li>
+          <li className={s.li}>
+            <Input label={'Password'} type={'password'} />
+          </li>
+          <li className={s.li}>
+            <Input label={'Confirm Password'} type={'password'} />
+          </li>
+        </ul>
+      </div>
+    </AuthWrapper>
   )
 }
