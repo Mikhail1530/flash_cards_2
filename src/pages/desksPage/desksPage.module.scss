@@ -60,7 +60,11 @@ h4 {
 .wrapSlider {
   width: 299px;
 }
+.tableHead > tr > th {
+  text-align: left;
+}
 
+//media query
 @media screen and (max-width: 1300px) {
   .container {
     padding: 3% 7%;
