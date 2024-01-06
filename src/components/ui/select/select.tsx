@@ -6,13 +6,23 @@ import * as SelectRadix from '@radix-ui/react-select'
 import s from './select.module.scss'
 
 type SelectProps = {
-  menu: string[]
-  onChangeOption?: (value: string) => void
+  className: string
+  itemsPerPage?: number
+  onChangeOption?: (value: number | string) => void
+  options: string[]
   placeholder?: string
   title?: string
 } & ComponentPropsWithoutRef<typeof SelectRadix.Root>
-export const Select: FC<SelectProps> = ({ menu, onChangeOption, placeholder, title, ...rest }) => {
-  const mappedOptions = menu.map((el, id) => {
+export const Select: FC<SelectProps> = ({
+  className,
+  itemsPerPage,
+  onChangeOption,
+  options,
+  placeholder,
+  title,
+  ...rest
+}) => {
+  const mappedOptions = options.map((el, id) => {
     return (
       <SelectRadix.Item className={s.selectItem} key={id} value={el}>
         <SelectRadix.ItemText>{el}</SelectRadix.ItemText>
@@ -26,7 +36,7 @@ export const Select: FC<SelectProps> = ({ menu, onChangeOption, placeholder, tit
       <div className={s.title}>{title}</div>
       <SelectRadix.Root {...rest}>
         <SelectRadix.Trigger className={s.trigger}>
-          <SelectRadix.Value placeholder={menu[0]} />
+          <SelectRadix.Value placeholder={options[0]} />
           <SelectRadix.Icon>
             <ArrowDownIcon className={s.iconArrow} />
           </SelectRadix.Icon>

@@ -1,7 +1,7 @@
 import { AuthWrapper } from '@/components/auth/auth-wrapper/auth-wrapper'
 import { Input } from '@/components/ui/input'
 
-const AuthFogotPasswordCreatePass = () => {
+const AuthForgotPasswordCreatePass = () => {
   return (
     <AuthWrapper
       button={'Create New Password'}
@@ -16,4 +16,4 @@ const AuthFogotPasswordCreatePass = () => {
   )
 }
 
-export default AuthFogotPasswordCreatePass
+export default AuthForgotPasswordCreatePass

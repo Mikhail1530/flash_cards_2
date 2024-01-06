@@ -3,7 +3,7 @@ import { AuthWrapper } from '@/components/auth/auth-wrapper/auth-wrapper'
 
 import s from './auth-fogot-password-check-email.module.scss'
 
-const AuthFogotPasswordCheckEmail = () => {
+const AuthForgotPasswordCheckEmail = () => {
   return (
     <AuthWrapper
       button={'Back to Sign In'}
@@ -18,4 +18,4 @@ const AuthFogotPasswordCheckEmail = () => {
   )
 }
 
-export default AuthFogotPasswordCheckEmail
+export default AuthForgotPasswordCheckEmail

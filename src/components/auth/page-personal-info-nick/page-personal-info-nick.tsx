@@ -13,7 +13,7 @@ const PagePersonalInfo = () => {
     >
       <div className={s.inputWraper}>
         <img alt={'Your Image'} src={img} />
-        <Input label={'Nickmame'} type={'password'} />
+        <Input label={'Nickname'} type={'password'} />
       </div>
     </AuthWrapper>
   )
