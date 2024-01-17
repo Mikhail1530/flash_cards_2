@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-import UnSelectRadioButtonSvg from '@/components/ui/radio-buttons/UnSelectRadioButtonSvg'
-import * as RadioGroup from '@radix-ui/react-radio-group'
+import UnSelectRadioButtonSvg from '@/components/ui/radio-group/UnSelectRadioButtonSvg'
+import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 
-import s from './radio-button.module.scss'
+import s from './radio-group.module.scss'
 
 import RadioButtonSvg from './RadioButtonSvg'
 
@@ -16,7 +16,7 @@ export type RadioButtonProps = {
   option: ButtonType[]
   variant?: 'Enable' | 'IsDisabled'
 }
-export const RadioButtons = (props: RadioButtonProps) => {
+export const RadioGroup = (props: RadioButtonProps) => {
   const [selectedOption, setSelectedOption] = useState<string>('Option1')
 
   const handleChange = (value: string) => {
@@ -34,19 +34,19 @@ export const RadioButtons = (props: RadioButtonProps) => {
   }
 
   return (
-    <RadioGroup.Root onValueChange={handleChange} orientation={'vertical'}>
+    <RadioGroupPrimitive.Root onValueChange={handleChange} orientation={'vertical'}>
       {props.option.map((radioBtn: ButtonType) => {
         return (
           <div className={s.radioAllItem} key={radioBtn.value}>
-            <RadioGroup.Item className={s.radioGroupItem} value={radioBtn.name}>
+            <RadioGroupPrimitive.Item className={s.radioGroupItem} value={radioBtn.name}>
               {renderRadioButton(selectedOption, radioBtn.name, radioBtn.isDisabled)}
-            </RadioGroup.Item>
+            </RadioGroupPrimitive.Item>
             <label>{radioBtn.name}</label>
           </div>
         )
       })}
-    </RadioGroup.Root>
+    </RadioGroupPrimitive.Root>
   )
 }
 
-export default RadioButtons
+export default RadioGroup

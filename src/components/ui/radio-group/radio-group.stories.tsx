@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { RadioButtons } from './'
+import { RadioGroup } from './'
 
 const meta = {
   argTypes: {
@@ -9,10 +9,10 @@ const meta = {
       options: ['Enable', 'IsDisabled'],
     },
   },
-  component: RadioButtons,
+  component: RadioGroup,
   tags: ['autodocs'],
   title: 'Components/RadioGroupDemo',
-} satisfies Meta<typeof RadioButtons>
+} satisfies Meta<typeof RadioGroup>
 
 export default meta
 type Story = StoryObj<typeof meta>
