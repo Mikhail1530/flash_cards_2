@@ -6,7 +6,7 @@ import * as Checkbox from '@radix-ui/react-checkbox'
 import cx from 'clsx'
 
 import s from './checkBox.module.scss'
-type CheckBoxProps = {
+export type CheckBoxProps = {
   checked?: boolean
   className?: string
   label?: string

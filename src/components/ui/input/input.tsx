@@ -6,7 +6,7 @@ import cx from 'clsx'
 
 import s from './input.module.scss'
 
-type InputProps = {
+export type InputProps = {
   clearInput?: () => void
   error?: string
   label?: string
