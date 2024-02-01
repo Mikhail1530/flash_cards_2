@@ -1,8 +1,27 @@
 import { baseApi } from '@/services/base-api'
+import { ArgCreateCardType, getCardsResponseType } from '@/services/cards/card.type'
 
+// 1 параметр - тип того, что возвращает сервер (ResultType)
+// 2 параметр - тип query аргументов (QueryArg)
 const cardsServiece = baseApi.injectEndpoints({
   endpoints: builder => {
     return {
+      addCard: builder.mutation<void, ArgCreateCardType>({
+        query: args => {
+          return {
+            body: { args },
+            method: 'POST',
+            url: `v1/decks/${args.id}/cards`,
+          }
+        },
+      }),
+      getCardById: builder.query<getCardsResponseType, string>({
+        query: id => {
+          debugger
+
+          return { url: `v1/cards/${id}` }
+        },
+      }),
       getCards: builder.query<void, string>({
         query: id => {
           return {
@@ -13,17 +32,11 @@ const cardsServiece = baseApi.injectEndpoints({
           }
         },
       }),
-      // addCard: builder.mutation<void, ArgCreateCardType>({
-      //   query: (args) => {
-      //     return {method: "POST", url: `v1/decks/${args.id}/cards`, body: {args,},
-      //     };
-      //   },
-      // }),
     }
   },
 })
 
-export const { useGetCardsQuery } = cardsServiece
+export const { useGetCardByIdQuery, useGetCardsQuery } = cardsServiece
 
 // import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 //

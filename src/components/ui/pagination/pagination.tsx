@@ -10,9 +10,9 @@ export type PaginatorPropsType = {
   className?: string
   currentPage: number
   handlePageChange: (pageNumber: number) => void
-  handleSetItemsPerPage: (numItemsPerPage: number | string) => void
-  itemsPerPage: number | undefined
-  selectOptions: string[]
+  handleSetItemsPerPage: (numItemsPerPage: number) => void
+  itemsPerPage: number
+  selectOptions?: string[]
   siblingCount?: number
   totalCount: number | undefined
   totalPages: number | undefined
@@ -29,7 +29,6 @@ export const Pagination = (props: PaginatorPropsType) => {
     siblingCount = 1,
     totalCount = 10,
   } = props
-
   const classNames = {
     arrowLeft: cx(s.arrow, s.left),
     arrowRight: cx(s.arrow, s.right),
@@ -63,8 +62,7 @@ export const Pagination = (props: PaginatorPropsType) => {
         {/* Left navigation arrow */}
         <li
           className={cx(s.paginationItem, { [s.disabled]: currentPage === 1 })}
-          onClick={onPrevious}
-        >
+          onClick={onPrevious}>
           <div className={classNames['arrowLeft']} />
         </li>
         {paginationRange.map((pageNumber, idx) => {
@@ -82,8 +80,7 @@ export const Pagination = (props: PaginatorPropsType) => {
             <li
               className={cx(s.paginationItem, { [s.selected]: pageNumber === currentPage })}
               key={idx}
-              onClick={() => handlePageChange(Number(pageNumber))}
-            >
+              onClick={() => handlePageChange(Number(pageNumber))}>
               {pageNumber}
             </li>
           )
@@ -93,8 +90,7 @@ export const Pagination = (props: PaginatorPropsType) => {
           className={cx(s.paginationItem, {
             [s.disabled]: currentPage === lastPage,
           })}
-          onClick={onNext}
-        >
+          onClick={onNext}>
           <div className={classNames['arrowRight']} />
         </li>
         <li>

@@ -3,38 +3,36 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { TabSwitcher } from './'
 
 const meta = {
-    title: 'Components/Button',
-    component: TabSwitcher,
-    tags: ['autodocs'],
-    argTypes: {
-        variant: {
-            options: ['light', 'average', 'dark'],
-            control: { type: 'radio' },
-        },
-        buttonsVariant: {
-            options: ['primary', 'secondary', 'tertiary', 'link'],
-            control: { type: 'radio' },
-        },
-        buttonsName:{
-            control:'text'
-            // control:{ type:Array<string>}
-        },
+  argTypes: {
+    buttonsName: {
+      control: { type: 'text' },
     },
+    buttonsVariant: {
+      control: { type: 'radio' },
+      options: ['primary', 'secondary', 'tertiary', 'link'],
+    },
+    variant: {
+      control: { type: 'radio' },
+      options: ['light', 'average', 'dark'],
+    },
+  },
+  component: TabSwitcher,
+  tags: ['autodocs'],
+  title: 'Components/TabSwitcher',
 } satisfies Meta<typeof TabSwitcher>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Average: Story = {
-    args: {
-        variant: 'average',
-        buttonsName: ['Primary Button','nex btn']
-    },
+  args: {
+    buttonsName: ['Primary Button', 'nex btn'],
+    variant: 'average',
+  },
 }
 export const Dark: Story = {
-    args: {
-        variant: 'dark',
-        buttonsName: ['Button','nex btn']
-    },
+  args: {
+    buttonsName: ['Button', 'nex btn'],
+    variant: 'dark',
+  },
 }
-

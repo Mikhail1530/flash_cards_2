@@ -1,9 +1,8 @@
 export type authType = {
+  message: 'Unauthorized'
+  path: '/v1/decks/clqr0vevn005lv12wu4kq304v'
   statusCode: 401
-  message: "Unauthorized"
-  timestamp: "2023-12-30T13:06:32.873Z"
-  path: "/v1/decks/clqr0vevn005lv12wu4kq304v"
-
+  timestamp: '2023-12-30T13:06:32.873Z'
 }
 export type LoginArgs = {
   email: string
@@ -19,7 +18,7 @@ export type SignUpArgs = {
   subject?: string
 }
 export type User = {
-  avtar?: string | null
+  avtar?: null | string
   created: string
   email: string
   id: string

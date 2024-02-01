@@ -1,24 +1,21 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { User } from '@/services/auth/auth.type'
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { User } from "@/services/auth/auth.type.ts";
 
 type initialStateType = {
   decksId: string
   decksName: string
   decksImg: string
-
-  user: User | null
+  user:User
 }
 const initialState: initialStateType = {
   decksId: '',
-  decksName: '',
-  decksImg: '',
-  user: null,
+  decksName:'',
+  decksImg:'',
+  user:{}as User,
 }
 
 const slice = createSlice({
-  name: 'tasks',
-  initialState,
-  reducers: {
+  name: 'tasks', initialState, reducers: {
     setDecksId: (state, action: PayloadAction<string>) => {
       state.decksId = action.payload
     },
@@ -31,7 +28,7 @@ const slice = createSlice({
     setUser: (state, action: PayloadAction<User>) => {
       state.user = action.payload
     },
-  },
+  }
 })
-export const appAC = slice.actions
-export const appReducer = slice.reducer
+export const appAC=slice.actions
+export const appReducer=slice.reducer

@@ -6,9 +6,9 @@ import * as SelectRadix from '@radix-ui/react-select'
 import s from './select.module.scss'
 
 type SelectProps = {
-  className: string
+  className?: string
   itemsPerPage?: number
-  onChangeOption?: (value: number | string) => void
+  onChangeOption?: (value: number) => void
   options: string[]
   placeholder?: string
   title?: string

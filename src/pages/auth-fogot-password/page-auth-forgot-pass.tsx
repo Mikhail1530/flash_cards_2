@@ -26,8 +26,7 @@ export const PageAuthForgotPassword = () => {
               href={linkHref}
               rel={'noopener nopener'}
               target={'_blank'}
-              variant={'link'}
-            >
+              variant={'link'}>
               Did you remember your password?
             </Button>
           </div>
@@ -38,8 +37,7 @@ export const PageAuthForgotPassword = () => {
               href={linkHref}
               rel={'noopener nopener'}
               target={'_blank'}
-              variant={'link'}
-            >
+              variant={'link'}>
               Try logging in
             </Button>
           </div>

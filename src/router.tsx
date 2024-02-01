@@ -7,16 +7,19 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
-import { PageLogin } from '@/components/pages/page-login/page-login'
-import { PageSignUp } from '@/components/pages/sign-up/page-sign-up'
 import CardsPage from '@/pages/cards/cardsPage'
+import LearnCards from '@/pages/cards/learnCards/learnCards'
 import DesksPage from '@/pages/desksPage/desksPage'
+import PageLogin from '@/pages/page-login/page-login'
+import PageSignUp from '@/pages/sign-up/page-sign-up'
 import { appAC } from '@/services/app.slice'
-import { useGetAuthMeQuery } from '@/services/auth/auth.servies.'
+import { useMeQuery } from '@/services/auth/auth.servies'
 
 export const PATH = {
+  cardTest: '/cardTest',
   cards: '/cards',
   decks: '/',
+  learn: '/cards/learn',
   login: '/login',
   loginOut: '/logOut',
   signUp: '/signUp',
@@ -25,10 +28,12 @@ export const PATH = {
 const publicRotes: RouteObject[] = [
   {
     element: <PageLogin />,
+    // path: '/login',
     path: PATH.login,
   },
   {
     element: <PageSignUp />,
+    // path: '/signUp',
     path: PATH.signUp,
   },
 ]
@@ -43,10 +48,13 @@ const privateRoutes: RouteObject[] = [
     path: PATH.loginOut,
   },
   {
-    // element: <div>card</div>,
     element: <CardsPage />,
     path: PATH.cards,
+    // children:[
+    //   {element: <LearnCards/>, path: PATH.learn}
+    // ]
   },
+  { element: <LearnCards />, path: PATH.learn },
 ]
 
 const router = createBrowserRouter([
@@ -60,10 +68,10 @@ const router = createBrowserRouter([
 export const Router = () => {
   return <RouterProvider router={router} />
 }
-
 function PrivateRoutes() {
   const dispatch = useDispatch()
-  const { data, isError, isLoading } = useGetAuthMeQuery()
+  const { data, isError, isLoading } = useMeQuery()
+
   const isAuthenticated = !isError
 
   if (isLoading) {
@@ -75,3 +83,4 @@ function PrivateRoutes() {
 
   return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
 }
+//<Route path="*" element={<NoMatch />} />

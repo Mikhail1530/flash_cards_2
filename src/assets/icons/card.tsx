@@ -21,8 +21,7 @@ export const Card = (props: SVGProps<SVGSVGElement>) => (
         id={'a'}
         width={426}
         x={0}
-        y={0}
-      >
+        y={0}>
         <feFlood floodOpacity={0} result={'BackgroundImageFix'} />
         <feColorMatrix
           in={'SourceAlpha'}

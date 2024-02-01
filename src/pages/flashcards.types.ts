@@ -20,6 +20,12 @@ export type CreateDecksArgs = {
   isPrivate?: boolean
   name: string
 }
+export type UpdateDecksArgs = {
+  cover?: string
+  id: string
+  isPrivate?: boolean
+  name: string
+}
 export type GetDecksResponsePagination = {
   currentPage: number
   itemsPerPage: number
@@ -44,36 +50,4 @@ export type GetDecksResponseItems = {
   shots: number
   updated: string
   userId: string
-}
-export type SignUpArgs = {
-  email: string
-  html?: string
-  name?: string
-  password: string
-  sendConfirmationEmail?: boolean
-  subject?: string
-}
-
-export type GetAuthMeResponseType = {
-  avatar: string
-  created: string
-  email: string
-  id: string
-  isEmailVerified: boolean
-  name: string
-  updated: string
-}
-export type LoginResponseType = {
-  accessToken: string
-}
-export type LoginArgs = {
-  email: string
-  password: string
-  rememberMe: boolean
-}
-
-export type UpdateUserDataArgs = {
-  avatar?: string
-  email?: string
-  name?: string
 }

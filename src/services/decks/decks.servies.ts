@@ -3,6 +3,7 @@ import {
   GetDeckByIdArgs,
   GetDecksArgs,
   GetDecksResponse,
+  UpdateDecksArgs,
 } from '@/pages/flashcards.types'
 import { baseApi } from '@/services/base-api'
 
@@ -32,12 +33,19 @@ const decksServiece = baseApi.injectEndpoints({
           return { method: 'DELETE', url: `v1/decks/${id}` }
         },
       }),
-      // updateDeck: builder.mutation<void, CreateDecksArgs>({
-      //   invalidatesTags: ['Decks'],
-      //   query: arg => {
-      //     return { body: arg, method: 'PUT', url: `v1/decks/${id}` }
-      //   },
-      // }),
+      updateDeck: builder.mutation<void, UpdateDecksArgs>({
+        invalidatesTags: ['Decks'],
+        query: arg => {
+          console.log('!!!!!updateDeck arg', arg, arg.id)
+          debugger
+
+          return {
+            body: { cover: arg.cover, isPrivate: arg.isPrivate, name: arg.name },
+            method: 'PATCH',
+            url: `v1/decks/${arg.id}`,
+          }
+        },
+      }),
     }
   },
 })
@@ -47,4 +55,29 @@ export const {
   useGetDeckByIdQuery,
   useGetDecksQuery,
   useRemoveDeckMutation,
+  useUpdateDeckMutation,
 } = decksServiece
+
+// import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+//
+// const initialState = {
+//   itemsPerPage: 10,
+//   currentPage: 1,
+//   searchByName: '',
+// }
+//
+// export const decksSlice = createSlice({
+//   initialState,
+//   name: 'decksSlice',
+//   reducers: {
+//     setItemsPerPage: (state, action: PayloadAction<number>) => {
+//       state.itemsPerPage = action.payload
+//     },
+//     setCurrentPage: (state, action: PayloadAction<number>) => {
+//       state.currentPage = action.payload
+//     },
+//     setSearchByName: (state, action: PayloadAction<string>) => {
+//       state.searchByName = action.payload
+//     },
+//   },
+// })

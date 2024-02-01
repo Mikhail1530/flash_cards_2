@@ -8,11 +8,7 @@ export type CustomDropdownMenuProps<T extends ElementType = 'nav'> = {
   triggerContent: ReactNode
 } & ComponentPropsWithoutRef<T>
 
-const CustomDropdownMenu: React.FC<CustomDropdownMenuProps> = ({
-  children,
-  className,
-  triggerContent,
-}) => {
+const CustomDropdownMenu: React.FC<CustomDropdownMenuProps> = ({ children, triggerContent }) => {
   const [isOpen, setIsOpen] = useState(true)
   const handleToggle = () => {
     setIsOpen(!isOpen)
@@ -30,13 +26,13 @@ const CustomDropdownMenu: React.FC<CustomDropdownMenuProps> = ({
 }
 
 interface MenuItemProps {
-  children: ReactNode | string
+  children: string
   // children: ReactNode
   path?: string
   shortcut?: string
 }
 
-export const MenuItem: React.FC<MenuItemProps> = ({ children, path, shortcut }) => (
+export const MenuItem: React.FC<MenuItemProps> = ({ children, shortcut }) => (
   <div className={s.menuItem}>
     {/*<NavLink to={`path? '{path}': '/'`}>{children}</NavLink>*/}
     <div>{children}</div>

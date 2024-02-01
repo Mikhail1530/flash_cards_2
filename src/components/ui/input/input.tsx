@@ -6,17 +6,18 @@ import cx from 'clsx'
 
 import s from './input.module.scss'
 
-export type InputProps = {
+type InputProps = {
+  className?: string
   clearInput?: () => void
   error?: string
   label?: string
 } & ComponentPropsWithoutRef<'input'>
+
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, clearInput, error, label, type = 'text', ...rest }, ref) => {
     const [show, setShow] = useState(false)
 
     const showPass = () => setShow(!show)
-
     const showClearButton = type === 'search' && rest?.value?.toString().length! > 0
     const showError = !!error && error.length > 0
     const classInput = cx(s[type], s.input, showError && s.error, className)
@@ -27,13 +28,18 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       </button>
     )
     const eyeButton = type === 'password' && (
-      <button className={s.buttonIcon} onMouseDown={showPass} onMouseUp={showPass} type={'button'}>
+      <button
+        className={s.buttonIcon}
+        onMouseDown={showPass}
+        onMouseOut={() => setShow(false)}
+        onMouseUp={showPass}
+        type={'button'}>
         <IconEye />
       </button>
     )
 
     return (
-      <div className={s.box}>
+      <div className={`${s.box} ${className}`}>
         <Typography as={'label'} className={s.label} variant={'body1'}>
           {type === 'search' ? '' : label}
         </Typography>

@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react'
 
-import s from '@/components/ui/card/card.module.scss'
+import s from './card.module.scss'
 
 export type titleType = {
   iconElement?: ReactNode
@@ -24,7 +24,7 @@ export const Card = (props: CardProps) => {
     <div {...rest} className={`${s.card} ${s[variant]} ${className}`} style={sizeCard}>
       {props.title && (
         <div className={s.cardHeader}>
-          <div className={s.iconSize}>{props.title.iconElement}</div>
+          {props.title.iconElement && <div className={s.iconSize}>{props.title.iconElement}</div>}
           <h3>{props.title.text}</h3>
         </div>
       )}
