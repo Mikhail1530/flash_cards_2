@@ -32,9 +32,9 @@ export const LoginForm = () => {
     control,
     name: 'rememberMe',
   })
-  // const onSubmit = (data: FormValues) => {
-  //   return
-  // }
+  const onSubmit = (data: FormValues) => {
+    return data
+  }
 
   return (
     <>

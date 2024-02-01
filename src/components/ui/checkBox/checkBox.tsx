@@ -6,6 +6,7 @@ import * as Checkbox from '@radix-ui/react-checkbox'
 import cx from 'clsx'
 
 import s from './checkBox.module.scss'
+
 export type CheckBoxProps = {
   checked?: boolean
   className?: string
@@ -22,8 +23,7 @@ export const CheckBox = forwardRef<ElementRef<typeof Checkbox.Root>, CheckBoxPro
             ref={ref}
             {...rest}
             checked={checked}
-            onCheckedChange={onCheckedChange}
-          >
+            onCheckedChange={onCheckedChange}>
             <Checkbox.Indicator>
               <CheckBoxIcon className={s.iconCheckBox} />
             </Checkbox.Indicator>
