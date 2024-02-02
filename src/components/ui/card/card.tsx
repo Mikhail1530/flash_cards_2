@@ -2,14 +2,14 @@ import { ComponentPropsWithoutRef, ReactNode } from 'react'
 
 import s from './card.module.scss'
 
-export type titleType = {
+export type TitleType = {
   iconElement?: ReactNode
   iconSize?: string
   text?: string
 }
 export type CardProps = {
   className?: string
-  title?: titleType
+  title?: TitleType
   variant?: 'dark' | 'light' | 'white'
   width?: string
 } & ComponentPropsWithoutRef<'div'>

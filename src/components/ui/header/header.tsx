@@ -12,7 +12,7 @@ export type HeaderProps<T extends ElementType = 'header'> = {
 } & ComponentPropsWithoutRef<T>
 
 export const Header = (props: HeaderProps) => {
-  const { as: Component = 'header', children, className, logoImg, logoLink, ...rest } = props
+  const { as: Component = 'header', children, className, logoImg, logoLink } = props
 
   return (
     <Component className={s.header}>

@@ -42,7 +42,8 @@ export const TabSwitcher = (props: TabSwitcherProps) => {
           className={` ${s.button}  ${activeBtn === b.value && s.btnActive}`}
           key={i}
           onClick={() => btnHandler(b)}
-          variant={buttonsVariant && buttonsVariant}>
+          variant={buttonsVariant && buttonsVariant}
+        >
           {b.name}
         </Button>
       ))}

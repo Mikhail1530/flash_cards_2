@@ -23,13 +23,6 @@ export const Button = <T extends ElementType = 'button'>(
     ...rest
   } = props
 
-  const iconBtnStyles = {
-    borderRadius: '30px',
-    height: '16px',
-    width: '16px',
-  }
-  // console.log('props', props);
-
   return (
     <>
       {iconBtn ? (

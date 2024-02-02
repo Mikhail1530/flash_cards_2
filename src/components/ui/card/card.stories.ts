@@ -41,7 +41,6 @@ export const Dark: Story = {
 export const Light: Story = {
   args: {
     children: 'light dody',
-    title: { text: 'light native title' },
     variant: 'light',
   },
 }

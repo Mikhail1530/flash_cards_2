@@ -4,7 +4,7 @@ import { TabSwitcher } from './'
 
 const meta = {
   argTypes: {
-    buttonsName: {
+    buttonsData: {
       control: { type: 'text' },
     },
     buttonsVariant: {
@@ -26,13 +26,15 @@ type Story = StoryObj<typeof meta>
 
 export const Average: Story = {
   args: {
-    buttonsName: ['Primary Button', 'nex btn'],
+    activeBtn: 'average',
+    buttonsData: [{ name: 'Primary Button', value: 'nex btn' }],
     variant: 'average',
   },
 }
 export const Dark: Story = {
   args: {
-    buttonsName: ['Button', 'nex btn'],
+    activeBtn: 'average',
+    buttonsData: [{ name: 'Button', value: 'nex btn' }],
     variant: 'dark',
   },
 }
