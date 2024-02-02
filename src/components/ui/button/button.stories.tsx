@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { SvgComponent } from '@/components/ui/button/iconButton'
-
 import { Button } from './'
+import { SvgComponent } from './iconButton'
 
 const meta = {
   argTypes: {
@@ -13,7 +12,7 @@ const meta = {
   },
   component: Button,
   tags: ['autodocs'],
-  title: 'Components/Button',
+  title: 'Components/ButtonLisa',
 } satisfies Meta<typeof Button>
 
 export default meta
